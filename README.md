@@ -83,3 +83,6 @@ After that, you would get a `build` folder. This folder has all compiled version
 
 ## References
 > There is nothing to see here
+
+## License
+> There is nothing to see here
