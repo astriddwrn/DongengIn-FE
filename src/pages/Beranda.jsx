@@ -5,6 +5,7 @@ import Header from '../components/common/Header';
 import Hero from '../components/pages/beranda/Hero';
 import CeritaTerfavorit from '../components/pages/beranda/CeritaTerfavorit';
 import YukMasuk from '../components/pages/beranda/YukMasuk';
+import PapanPeringkat from '../components/pages/beranda/PapanPeringkat';
 
 const Beranda = () => {
 
@@ -14,7 +15,8 @@ const Beranda = () => {
             <Hero />
             <CeritaTerfavorit className="mt-96" />
             <YukMasuk />
-            <Footer />
+            <PapanPeringkat />
+            {/* <Footer /> */}
         </React.Fragment>
     );
 

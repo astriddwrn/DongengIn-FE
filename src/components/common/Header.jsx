@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Logo from '../../assets/images/common/logo.svg';
 
 const Header = () => {
+
+  let listener = null
+  const [scrollState, setScrollState] = useState("top")
+
+  useEffect(() => {
+    listener = document.addEventListener("scroll", e => {
+      var scrolled = document.scrollingElement.scrollTop
+      if (scrolled >= 120) {
+        if (scrollState !== "amir") {
+          setScrollState("amir")
+        }
+      } else {
+        if (scrollState !== "top") {
+          setScrollState("top")
+        }
+      }
+    })
+    return () => {
+      document.removeEventListener("scroll", listener)
+    }
+  }, [scrollState])
+
     return (
       <>    
-        <div className="navbar font-sans flex flex-row justify-between items-center px-20 py-5 fixed top-0 w-full">
+        <div className={(scrollState=="top" ? '' : 'bg-cWhite') + " navbar font-sans flex flex-row justify-between items-center px-20 py-5 fixed top-0 w-full"}>
             <div className="logo"><img className="h-5" src={Logo} alt="" /></div>
             <div className="menu-list flex flex-row justify-between w-5/12 items-center font-semibold text-lg">
                 <div className="active">Beranda</div>

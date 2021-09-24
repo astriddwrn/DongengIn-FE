@@ -7,6 +7,15 @@
     color: #E15B7E;
 }
 
+.navbar.bg-cWhite{
+  transition: all .3s ease;
+}
+
+.navbar{
+  transition: all .3s ease;
+
+}
+
 .hero{
     background: linear-gradient(180deg,  rgba(65, 189, 208, 0.5) 0%, rgba(65, 189, 208, 0) 100%);
 }
@@ -14,6 +23,7 @@
 .hero .text-cont{
     min-width: 500px;
 }
+
 
   /* the slides */
   .slick-slide {
@@ -31,3 +41,14 @@
   .terfavorit .category{
     color: #A0DEE8;
   }
+
+  .papanperingkat .first{
+    background-color: #FFE354;
+  }
+  .papanperingkat .second{
+    background-color: #DFDFDF;
+  }
+  .papanperingkat .third{
+    background-color: #FEA119;
+  }
+
