@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import BerandaPage from './pages/Beranda'
+import Beranda from './pages/Beranda'
+import KumpulanDongeng from './pages/KumpulanDongeng'
 
 import './styles/main.css'
 
@@ -11,7 +12,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <BerandaPage />
+            <Beranda currRoute="Beranda" />
+          </Route>
+          <Route path="/kumpulan-dongeng">
+            <KumpulanDongeng currRoute="KumpulanDongeng" />
           </Route>
         </Switch>
       </Router>
