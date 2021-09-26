@@ -7,11 +7,11 @@ import CeritaTerfavorit from '../components/pages/beranda/CeritaTerfavorit';
 import YukMasuk from '../components/pages/beranda/YukMasuk';
 import PapanPeringkat from '../components/pages/beranda/PapanPeringkat';
 
-const Beranda = () => {
+const Beranda = (props) => {
 
     return (
         <React.Fragment>
-            <Header />
+            <Header currRoute={props.currRoute} />
             <Hero />
             <CeritaTerfavorit className="mt-96" />
             <YukMasuk />
