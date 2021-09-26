@@ -13,7 +13,6 @@ const KumpulanDongeng = () => {
     return (
         <React.Fragment>
             <Header currRoute='KumpulanDongeng' />
-            
             <TelusuriCerita/>
             <img className="absolute top-0 z-10 w-96" src={BlueVector} alt="" />
             <Footer />

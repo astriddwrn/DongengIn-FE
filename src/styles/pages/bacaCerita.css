@@ -1,0 +1,26 @@
+.headerBaca{
+    background: rgba(0, 0, 0, 0.3);
+}
+.ceritaPage .arrow-left:hover,
+.ceritaPage .arrow-right:hover{
+    filter: brightness(85%);
+    transition: all .3s ease;
+}
+.ceritaPage .arrow-left,
+.ceritaPage .arrow-right{
+    transition: all .3s ease;
+}
+.ceritaPage .caption-cont{
+    transition: all .3s ease;
+}
+
+.fadeOut{
+    opacity:0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+
+}
+.fadeIn{
+    opacity:1;
+    transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+
+}

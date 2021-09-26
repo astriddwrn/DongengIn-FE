@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,15 +54,12 @@ const TelusuriCerita = (props) => {
     },
   ]);
 
-
   const settings = {
     centerMode: true,
     centerPadding: '10px',
     slidesToShow: 7,
     arrows : false,
   };
-
-
 
     return (
       <>    
