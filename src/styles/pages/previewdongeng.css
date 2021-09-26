@@ -1,0 +1,11 @@
+.deskripsi .tags {
+    color: #2083B5;
+    background: #E2F0F9;
+    border: 1.5px solid #2083B5;
+    border-radius: 1.5rem;
+    padding: 0.2rem 1rem;
+}
+
+.deskripsi .ratings img {
+    width: 2rem;
+}
