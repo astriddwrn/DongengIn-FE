@@ -9,13 +9,16 @@ import SearchIcon from '../../../assets/images/pages/beranda/hero-searchicon.svg
 
 
 const Hero = () => {
+
     return (
       <>
-        <div className="hero h-screen w-full relative">
-          <img className=" -bottom-96 absolute w-full z-30" src={Grass} alt="" />
-          <img className="-bottom-32 left-40 absolute w-96 z-20" src={Castle} alt="" />
+      <img className=" -bottom-96 absolute w-full z-30" src={Grass} alt="" />
+        <div className="hero container w-full relative overflow-hidden">
+
+          <img className="joey -bottom-32 left-40 absolute w-96 z-20" src={Castle} alt="" />
           <img className="-bottom-60 absolute w-full z-10" src={Mountain1} alt="" />
           <img className="-bottom-64 absolute w-full z-0" src={Mountain2} alt="" />
+
           <div className="text-cont top-52 absolute right-36 z-50 w-4/12">
             <div className="text-5xl font-extrabold tracking-widest leading-relaxed">JELAJAHI DUNIA</div>
             <div className="text-2xl tracking-widest w-11/12 leading-9 my-2">Jelajahi cerita dongeng yang akan membawamu kedalam dunia khayalan</div>

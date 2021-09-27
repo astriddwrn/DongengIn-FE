@@ -6,6 +6,7 @@ import PreviewDongengPage from './pages/PreviewDongeng'
 import Beranda from './pages/Beranda'
 import KumpulanDongeng from './pages/KumpulanDongeng'
 import Daftar from './pages/Daftar'
+import BacaCerita from './pages/BacaCerita'
 
 import './styles/main.css'
 
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/malin-kundang">
             <PreviewDongengPage />
+          </Route>
+          <Route path="/baca-malin-kundang">
+            <BacaCerita />
           </Route>
         </Switch>
       </Router>
