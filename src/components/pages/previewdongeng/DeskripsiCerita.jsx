@@ -23,7 +23,7 @@ const DeskripsiCerita = () => {
                 <div className="w-1/3 ml-16">
                     <img className="object-cover h-full w-full" src={require(`../../../assets/images/pages/beranda/${data[0].image}.svg`).default} alt="" />
                 </div>
-                <div className="right w-2/3 px-16">
+                <div className="w-2/3 px-16">
                     <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-8">{data[0].title}</div>
                     <div className="text-2xl font-normal leading-10">{data[0].deskripsi}</div>
                     <div className="tags-container flex flex-row flex-wrap">
