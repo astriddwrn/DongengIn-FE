@@ -6,6 +6,7 @@ import PreviewDongengPage from './pages/PreviewDongeng'
 import Beranda from './pages/Beranda'
 import KumpulanDongeng from './pages/KumpulanDongeng'
 import Daftar from './pages/Daftar'
+import Masuk from './pages/Masuk'
 import BacaCerita from './pages/BacaCerita'
 
 import './styles/main.css'
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/daftar">
             <Daftar/>
+          </Route>
+          <Route exact path="/masuk">
+            <Masuk/>
           </Route>
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng currRoute="KumpulanDongeng" />

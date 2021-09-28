@@ -2,17 +2,17 @@ import React from 'react';
 
 import Footer from '../components/common/Footer';
 import Header from '../components/common/Header';
-import DaftarForm from '../components/pages/auth/DaftarForm';
+import MasukForm from '../components/pages/auth/MasukForm';
 
-const Daftar = (props) => {
+const Masuk = (props) => {
 
     return (
         <React.Fragment>
             <Header/>
-            <DaftarForm/>
+            <MasukForm/>
         </React.Fragment>
     );
 
 };
 
-export default Daftar;
+export default Masuk;
