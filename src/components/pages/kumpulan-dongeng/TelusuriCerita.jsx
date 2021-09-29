@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -100,11 +101,11 @@ const TelusuriCerita = (props) => {
                                             <img className={""+((d.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                                         </div>
                                     </div>
-                                    <a href={d.link}>
+                                    <Link to={d.link}>
                                         <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed">
                                             Baca Buku
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
