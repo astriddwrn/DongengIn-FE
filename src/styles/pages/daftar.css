@@ -1,0 +1,7 @@
+.daftar input {
+    outline: none;
+}
+
+.daftar input:active {
+    outline: none;
+}

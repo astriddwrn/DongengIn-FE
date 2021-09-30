@@ -1,5 +1,9 @@
+@import url("./common/sidebar.css");
+
 @import url("./pages/home.css");
 @import url("./pages/previewdongeng.css");
 @import url("./pages/kumpulanDongeng.css");
+@import url("./pages/daftar.css");
 @import url("./pages/bacaCerita.css");
+@import url("./pages/masuk.css");
 
