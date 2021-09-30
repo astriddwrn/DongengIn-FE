@@ -19,7 +19,7 @@ const HeaderBaca = (props) => {
     return (
         <div className="headerBaca absolute w-screen z-50 top-0 text-lg flex flex-row justify-between items-center px-10 py-3 text-cWhite font-semibold tracking-widest leading-relaxed">
             <div className="flex flex-row">
-                <img src={HeaderArrow} alt="" />
+                <a href="/malin-kundang"><img src={HeaderArrow} alt="" /></a>
                 <div className="ml-10">Malin Kundang</div>
             </div>
             <div>

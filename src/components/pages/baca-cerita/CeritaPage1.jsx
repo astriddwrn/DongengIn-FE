@@ -13,42 +13,78 @@ const CeritaPage1 = (props) => {
         "Setelah sembuh dari sakitnya ia semakin disayang. Mereka adalah ibu dan anak yang saling menyayangi.",
     ]);
     const [currCaption, setCurrCaption] = useState(0);
-    const maxCaption = 3;
+    const maxCaption = 4;
     const minCaption = 0;
     const [captionVisible, setCaptionVisible] = useState(true);
+    const [answer, setAnswer] = useState(null);
+    const correctAnswer = 2;
 
     const nextBtn = () => {
-        setCaptionVisible(false);
-        setTimeout(function(){ setCurrCaption(currCaption+1); }, 200);
-        setTimeout(function(){ setCaptionVisible(true) }, 200);
+      setCaptionVisible(false);
+      setTimeout(function(){ setCurrCaption(currCaption+1); }, 200);
+      setTimeout(function(){ setCaptionVisible(true) }, 200);
     }
     const prevBtn = () => {
-        setCaptionVisible(false);
-        setTimeout(function(){ setCurrCaption(currCaption-1); }, 200);
-        setTimeout(function(){ setCaptionVisible(true) }, 200);
+      setCaptionVisible(false);
+      setTimeout(function(){ setCurrCaption(currCaption-1); }, 200);
+      setTimeout(function(){ setCaptionVisible(true) }, 200);
     }
 
-    const pageVisible = () => {
-        document.getElementById("ceritaPage").classList.add("fadeIn");
-        setTimeout(function() {document.getElementById("ceritaPage").classList.add("block"); }, 200);
-    }
-    const pageInvisible = () => {
-        document.getElementById("ceritaPage").classList.add("fadeOut");
-        setTimeout(function() {document.getElementById("ceritaPage").classList.add("hidden"); }, 200);
-    }
+    // const correctAnswerFunction = () => {
+    //   if(!answer){
+    //     setAnswer(2);
+    //     props.totalKoin(100);
+    //     console.log("test");
+    //   }
+    //   return;
+    // }
 
     return (
-        <div className={`ceritaPage w-screen h-screen absolute bottom-0 ${props.pagenum===1? "fadeIn z-20" : "fadeOut z-10"}`}>
+        <div className={`ceritaPage w-screen h-screen absolute bottom-0 overflow-hidden ${props.pagenum===1? "fadeIn z-20" : "fadeOut z-10"}`}>
           <img className="object-cover position-center w-screen h-screen" src={Background} alt="" />
           <div className="absolute bottom-10 w-full px-10 flex flex-row justify-between">
             <img className="arrow-left w-20 cursor-pointer" src={ArrowLeft} 
-                onClick={currCaption===minCaption? null : ()=>prevBtn()} />
+                onClick={(currCaption===minCaption)? null : ()=>prevBtn()} />
             <img className="arrow-right w-20 cursor-pointer" src={ArrowRight} 
-                onClick={currCaption===maxCaption? props.nextPage :()=>nextBtn()} />
+                onClick={ (!answer && currCaption === maxCaption)? null : (currCaption===maxCaption)? props.nextPage : ()=>nextBtn()} />
           </div>
-          <div id="caption" className={`caption-cont absolute bottom-10 text-lg w-8/12 left-1/2 transform -translate-x-1/2 bg-cWhite py-3 px-8 rounded-lg tracking-widest leading-relaxed  + ${captionVisible? "fadeIn" : "fadeOut"} `}>
-              {caption[currCaption]}</div>
+            <div id="caption" className={`caption-cont absolute bottom-10 text-lg w-8/12 left-1/2 transform -translate-x-1/2 bg-cWhite py-3 px-8 rounded-lg tracking-widest leading-relaxed  + ${captionVisible? "fadeIn" : "fadeOut"} + ${currCaption==4? "hidden" : ""}`}>
+              {caption[currCaption]}
+            </div>
+
+            <div className={`caption-cont absolute bottom-10 text-lg w-8/12 left-1/2 transform -translate-x-1/2 bg-cWhite py-3 px-8 rounded-lg tracking-widest leading-relaxed + ${currCaption==4? "fadeIn text-center" : "fadeOut"}`}>
+              Berapa jumlah burung yang ada di gambar ini?
+              <div className="flex flex-wrap 8/12 justify-center mt-3">
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===1? "incorrectAns" : ""} `}
+                      onClick={()=> 
+                        !answer? setAnswer(1) :  null 
+                        // answerFeedback(1);
+                      } >Satu</div>
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer? "correctAns" : ""} `}
+                      onClick={()=> {
+                        if(!answer){
+                              setAnswer(2);
+                              props.totalKoin(100);
+                            }
+                      }}>Tiga</div>
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===3? "incorrectAns" : ""} `}
+                      onClick={()=> 
+                        !answer? setAnswer(3) : null
+                        // answerFeedback(3);
+                        }>Empat</div>
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===4? "incorrectAns" : ""} `}
+                      onClick={()=> 
+                        !answer? setAnswer(4) : null
+                       
+                      }>Tujuh</div>
+              </div>
+            </div>
+   
+            <div className={`feedback feedbackCorrect text-cWhite bg-cBlack absolute top-16 -right-96 z-40 rounded-lg z-30 w-96 px-3 py-3 text-lg ${answer==correctAnswer && currCaption==maxCaption ? 'visible' : ''} `}>Selamat kamu mendapatkan 100 Koin!</div>
+            <div className={`feedback feedbackIncorrect text-cWhite bg-cBlack absolute top-16 -right-96 z-40 rounded-lg z-30 w-96 px-3 py-3 text-lg ${answer!=correctAnswer && answer!=null && currCaption==maxCaption? 'visible' : ''} `}>Maaf kamu belum beruntung :(</div>
+
         </div>
+
     );
 
 };

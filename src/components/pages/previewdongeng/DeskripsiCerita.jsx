@@ -7,7 +7,7 @@ const DeskripsiCerita = () => {
 
     const [data, setData] = useState([
         {
-            title: "Malin Kandung",
+            title: "Malin Kundang",
             deskripsi: "Diceritakan bahwa Malin Kundang merupakan anak semata wayang yang tinggal bersama ibunya. Saat remaja, ia memutuskan untuk pergi merantau dengan menumpang kapal seorang saudagar. Di tengah perjalanan, kapal yang dinaiki Malin Kundang di serang oleh bajak laut.",
             category: "Minangkabau",
             rating: 4,
@@ -27,7 +27,7 @@ const DeskripsiCerita = () => {
                     <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-8">{data[0].title}</div>
                     <div className="text-2xl font-normal leading-10">{data[0].deskripsi}</div>
                     <div className="tags-container flex flex-row flex-wrap">
-                        <div class="tags mt-8">
+                        <div className="tags mt-8">
                             {data[0].category}
                         </div>
                     </div>
@@ -38,7 +38,7 @@ const DeskripsiCerita = () => {
                         <img className={""+((data[0].rating >= 4) ? '' : 'hidden')} src={Star} alt="" />
                         <img className={""+((data[0].rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                     </div>
-                    <button className="font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8">Baca Buku</button>
+                    <a href="baca-malin-kundang" className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center">Baca Buku</a>
                     <ButtonFavorit isFavorit={data[0].isFavorit}/>
                 </div>
             </div>

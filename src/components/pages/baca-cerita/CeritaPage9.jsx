@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 import Background from '../../../assets/images/pages/baca-cerita/cerita-background-malin9.svg';
 import ArrowLeft from '../../../assets/images/pages/baca-cerita/cerita-left-arrow.svg';
@@ -28,6 +28,7 @@ const CeritaPage9 = (props) => {
         setTimeout(function(){ setCurrCaption(currCaption-1); }, 200);
         setTimeout(function(){ setCaptionVisible(true) }, 200);
     }
+    
 
 
     return (
