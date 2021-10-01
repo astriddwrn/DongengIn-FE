@@ -8,6 +8,7 @@ import Daftar from './pages/Daftar'
 import Masuk from './pages/Masuk'
 import BacaCerita from './pages/BacaCerita'
 import Profile from './pages/Profil'
+import KoleksiKartu from './pages/KoleksiKartu'
 
 import './styles/main.css'
 
@@ -34,8 +35,11 @@ function App() {
           <Route path="/baca-malin-kundang">
             <BacaCerita />
           </Route>
-          <Route path="/profile">
+          <Route path="/profil">
             <Profile />
+          </Route>
+          <Route path="/koleksi-kartu">
+            <KoleksiKartu />
           </Route>
         </Switch>
       </Router>
