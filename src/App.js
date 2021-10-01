@@ -20,19 +20,19 @@ function App() {
           <Route exact path="/">
             <Beranda currRoute="Beranda" />
           </Route>
-          <Route exact path="/daftar">
+          <Route path="/daftar">
             <Daftar/>
           </Route>
-          <Route exact path="/masuk">
+          <Route path="/masuk">
             <Masuk/>
           </Route>
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng currRoute="KumpulanDongeng" />
           </Route>
-          <Route exact path="/malin-kundang">
+          <Route path="/malin-kundang">
             <PreviewDongengPage />
           </Route>
-          <Route path="/baca-malin-kundang">
+          <Route path="/story/malin_kundang">
             <BacaCerita />
           </Route>
           <Route path="/profil">
