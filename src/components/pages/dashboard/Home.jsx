@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Coin from '../../../assets/images/pages/dashboard/coin.svg'
 /* import Malin from '../../../assets/images/pages/beranda/terfavorit-malin.svg'; */
-import { data } from 'autoprefixer';
-
 const Home = () => {
 
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [userData, setuserData] = useState([
     {
       "fullname":"User Name",
@@ -65,6 +65,21 @@ const Home = () => {
     }
   
   ]);
+  
+  /* useEffect(() => {
+    fetch("https://dongengin.000webhostapp.com/api/user")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setuserData(result);
+        },
+        (error) => {
+          console.log("yes");
+          setIsLoaded(true);
+        }
+      )
+  }, []) */
 
   return (
     <>
@@ -126,20 +141,10 @@ const Home = () => {
             <p className="text-2xl font-bold mt-2">{userData[0].username}</p>
           </div>
         </div>
-
+        
+        {/* Riwayat */}
         <div className="bg-cWhite py-8 px-16 rounded-xl">
           <p className="text-3xl font-extrabold mb-7">Riwayat</p>
-          {/* {userData[0].riwayat.map(d => 
-            <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-extrabold">Malin Kundang</p>
-            <Link
-              className="text-cWhite bg-cPink px-6 py-2 font-extrabold rounded-3xl"
-              to=""
-            >
-              Baca Buku
-            </Link>
-          </div>
-          )} */}
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-extrabold">Luntung Kasarung</p>
             <Link
