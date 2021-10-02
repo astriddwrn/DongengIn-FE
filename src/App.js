@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import PreviewDongengPage from './pages/PreviewDongeng'
 import Beranda from './pages/Beranda'
@@ -18,7 +18,9 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [stories, setStories] = useState([]);
   const [user, setUser] = useState({code:401});
- 
+  
+  window.setUser = setUser;
+
   useEffect(() => {
     fetch("https://dongengin.000webhostapp.com/api/stories")
       .then(res => res.json())
@@ -35,20 +37,23 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch("https://dongengin.000webhostapp.com/api/user")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setUser(result);
+    console.log("userlopggnsas");
+    fetch("https://dongengin.000webhostapp.com/api/user", {
+      credentials: 'include',
+    })
+    .then(res => res.json())  
+    .then(
+      (result) => {
+        setIsLoaded(true);
+        setUser(result);
+        console.log(result);
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
-      )
+     )
     }, [])
-
 
   return (
     <>
@@ -61,7 +66,7 @@ function App() {
             <Daftar currRoute="Daftar" user={user} />
           </Route>
           <Route path="/masuk" >
-            <Masuk user={user} />
+            {user.code === 200 ? console.log("masukpakeko") : <Masuk user={user} />}
           </Route>
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng currRoute="KumpulanDongeng" user={user}  />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
 
 const DaftarForm = () => {
@@ -9,15 +10,47 @@ const DaftarForm = () => {
     const [password, setPassword] = useState('');
 
     const data = { fullname, birthdate, username, password };
-
-    const sendData = () => {
-        fetch('https://dongengin.000webhostapp.com/api/auth/register', {
+    const loginData = { username, password };
+    
+    const encode = (data) => {     
+        var formBody = [];
+        for (var property in data) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        return formBody;
+    }
+    
+    const sendData = async () => {
+        var res = await fetch('https://dongengin.000webhostapp.com/api/auth/register', {
             method: 'POST',
-            body: JSON.stringify(data)
-        }).then(() => {
-            console.log(data);
-        }).then((res) => console.log(res))
-        .catch((err) => console.log(err))
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(data)
+        }) 
+        if (res.status == 200) {
+            console.log("farhanmabar");
+            var login = await fetch('https://dongengin.000webhostapp.com/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                credentials: 'include',
+                body: encode(loginData)
+            })
+            if (login.status == 200) {
+                console.log("berhasil log in");
+                window.setUser([
+                    {
+                        code : 200,
+                    }
+                ]);
+            }
+        }
     }
 
     const handleSubmit = (event) => {
@@ -90,9 +123,9 @@ const DaftarForm = () => {
                     
                     </div>
                 </div>
-                <div className="w-2/4 fixed right-0">
-                    <img className="" src={bg} alt="" />
-                </div>
+                {/* <div className=""> */}
+                    <img className="object-cover w-2/4 fixed right-0 h-screen" src={bg} alt="" />
+                {/* </div> */}
             </div>
         </form>
     )
