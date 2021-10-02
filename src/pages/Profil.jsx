@@ -1,10 +1,10 @@
 import Sidebar from '../components/common/Sidebar'
 import Home from '../components/pages/dashboard/Home'
 
-const Profil = () => {
+const Profil = (props) => {
   return (
     <Sidebar>
-      <Home />
+      <Home user={props.user}/>
     </Sidebar>
   )
 }

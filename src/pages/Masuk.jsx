@@ -8,7 +8,7 @@ const Masuk = (props) => {
 
     return (
         <React.Fragment>
-            <Header/>
+            <Header user={props.user}/>
             <MasukForm/>
         </React.Fragment>
     );

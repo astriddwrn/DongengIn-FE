@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import PreviewDongengPage from './pages/PreviewDongeng'
@@ -13,33 +13,74 @@ import KoleksiKartu from './pages/KoleksiKartu'
 import './styles/main.css'
 
 function App() {
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [stories, setStories] = useState([]);
+  const [user, setUser] = useState({code:401});
+ 
+  useEffect(() => {
+    fetch("https://dongengin.000webhostapp.com/api/stories")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setStories(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+  useEffect(() => {
+    fetch("https://dongengin.000webhostapp.com/api/user")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setUser(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+    }, [])
+
+
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/">
-            <Beranda currRoute="Beranda" />
+            <Beranda currRoute="Beranda" user={user} />
           </Route>
           <Route path="/daftar">
-            <Daftar/>
+            <Daftar currRoute="Daftar" user={user} />
           </Route>
-          <Route path="/masuk">
-            <Masuk/>
+          <Route path="/masuk" >
+            <Masuk user={user} />
           </Route>
           <Route path="/kumpulan-dongeng">
-            <KumpulanDongeng currRoute="KumpulanDongeng" />
+            <KumpulanDongeng currRoute="KumpulanDongeng" user={user}  />
           </Route>
-          <Route path="/malin-kundang">
-            <PreviewDongengPage />
-          </Route>
-          <Route path="/story/malin_kundang">
-            <BacaCerita />
+          <Route path="/story/:route"
+            render={({match}) => (
+              <PreviewDongengPage 
+              story={stories.find(p => p.route == '/story/'+match.params.route)} 
+              user={user}
+                />
+            )} />
+          <Route path="/baca-malin-kundang">
+            <BacaCerita user={user} />
           </Route>
           <Route path="/profil">
-            <Profile />
+            <Profile user={user} />
           </Route>
           <Route path="/koleksi-kartu">
-            <KoleksiKartu />
+            <KoleksiKartu user={user} />
           </Route>
         </Switch>
       </Router>

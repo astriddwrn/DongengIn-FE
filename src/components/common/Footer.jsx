@@ -10,7 +10,7 @@ import Appstore from '../../assets/images/common/footer-appstore.svg';
 
 const Footer = () => {
     return(
-        <div class="footer relative">
+        <div className="footer relative">
             <img className="w-full h-96 object-cover mt-40" src={Background} alt="" />
             <div className="absolute z-20 w-10/12 transform -translate-x-1/2  flex flex-row justify-between items-center bottom-28 left-1/2">
                 <img className="h-6" src={LogoBlue} alt="" />

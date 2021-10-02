@@ -4,9 +4,10 @@ import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
 import googlelogo from '../../../assets/images/common/googlelogo.png';
 
 const MasukForm = () => {
-  
+    console.log('test');
     return (
         <div className="masuk mt-24 my-0">
+            
             <div className="content w-full flex flex-row relative">
                 <div className="w-2/4 px-32">
                     <div className="flex flex-col">
@@ -29,9 +30,9 @@ const MasukForm = () => {
                         </button>
                     </div>
                 </div>
-                <div className="w-2/4 fixed right-0">
-                    <img className="" src={bg} alt="" />
-                </div>
+                {/* <div className=""> */}
+                    <img className="object-cover w-2/4 fixed right-0 h-screen" src={bg} alt="" />
+                {/* </div> */}
             </div>
         </div>
     )

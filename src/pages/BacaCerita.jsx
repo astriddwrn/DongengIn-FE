@@ -13,7 +13,7 @@ import CeritaPage9 from '../components/pages/baca-cerita/CeritaPage9';
 import Popup from '../components/pages/baca-cerita/Popup';
 
 
-const BacaCerita = () => {
+const BacaCerita = (props) => {
     const [pagenum, setPagenum] = useState(1);
     const totalPage = 9;
     const minPage = 1;
@@ -44,7 +44,7 @@ const BacaCerita = () => {
 
     return (
         <React.Fragment>
-            <HeaderBaca pagenum={pagenum} totalPage={totalPage} />
+            <HeaderBaca pagenum={pagenum} totalPage={totalPage} user={props.user} />
             <CeritaPage1 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage} totalKoin={totalKoin}  />
             <CeritaPage2 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
             <CeritaPage3 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />

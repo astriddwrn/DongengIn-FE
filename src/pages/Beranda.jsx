@@ -8,13 +8,15 @@ import YukMasuk from '../components/pages/beranda/YukMasuk';
 import PapanPeringkat from '../components/pages/beranda/PapanPeringkat';
 
 const Beranda = (props) => {
-
+    
     return (
         <React.Fragment>
-            <Header currRoute={props.currRoute} />
+            <Header currRoute={props.currRoute} user={props.user} />
             <Hero />
             <CeritaTerfavorit className="mt-96" />
-            <YukMasuk />
+            <div className={`${props.user.code==200? 'hidden' : 'block'}`}>
+                <YukMasuk />
+            </div>
             <PapanPeringkat />
             <Footer />
         </React.Fragment>
