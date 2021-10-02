@@ -12,7 +12,7 @@ const Beranda = (props) => {
     return (
         <React.Fragment>
             <Header currRoute={props.currRoute} user={props.user} />
-            <Hero />
+            <Hero updateSearch={props.updateSearch} />
             <CeritaTerfavorit className="mt-96" />
             <div className={`${props.user.code==200? 'hidden' : 'block'}`}>
                 <YukMasuk />

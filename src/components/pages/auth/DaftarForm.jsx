@@ -117,7 +117,7 @@ const DaftarForm = () => {
                         </label>
                         
                         <button
-                            className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-16 mx-auto"
+                            className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-16 mx-auto btnPurple"
                         >Daftar
                         </button>
                     

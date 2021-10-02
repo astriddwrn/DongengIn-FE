@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 
 import Grass from '../../../assets/images/pages/beranda/hero-grass.svg';
 import Castle from '../../../assets/images/pages/beranda/hero-castle.svg';
@@ -8,7 +9,11 @@ import SearchIcon from '../../../assets/images/pages/beranda/hero-searchicon.svg
 
 
 
-const Hero = () => {
+const Hero = (props) => {
+
+  const searchHandle = () => {
+    props.updateSearch(document.getElementById('search').value);
+  }
 
     return (
       <>
@@ -23,8 +28,8 @@ const Hero = () => {
             <div className="text-5xl font-extrabold tracking-widest leading-relaxed">JELAJAHI DUNIA</div>
             <div className="text-2xl tracking-widest w-11/12 leading-9 my-2">Jelajahi cerita dongeng yang akan membawamu kedalam dunia khayalan</div>
             <div className="search-cont relative">
-              <input className="bg-cWhite text-cBlack rounded-full  py-3 px-5 w-full mt-5 tracking-widest outline-none pr-16" type="text" placeholder="Mau baca apa hari ini?" />
-              <img className="absolute right-4 top-7 w-8 cursor-pointer " src={SearchIcon} alt="" />
+              <input className="bg-cWhite text-cBlack rounded-full  py-3 px-5 w-full mt-5 tracking-widest outline-none pr-16" id="search" type="text" placeholder="Mau baca apa hari ini?" />
+              <Link to="/kumpulan-dongeng" onClick={()=> searchHandle()}><img className="absolute right-4 top-7 w-8 cursor-pointer " src={SearchIcon} alt="" /></Link>
             </div>
           </div>
         </div>

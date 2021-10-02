@@ -79,7 +79,7 @@ const MasukForm = () => {
                             />
                         </label>
                         <div className="text-cPink text-lg font-bold mt-2">Kamu belum punya akun? <span><a href="" className="text-cPurple underline">Yuk Daftar</a></span></div>
-                        <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-12 mx-auto">Masuk</button>
+                        <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-12 mx-auto btnPurple">Masuk</button>
                         <button className="googlebutton font-bold text-lg flex flex-row justify-center items-center mb-8 mx-auto">
                             <span><img className="w-6 mr-5" src={googlelogo} alt="" /></span>Masuk dengan Google
                         </button>
