@@ -18,6 +18,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [stories, setStories] = useState([]);
   const [user, setUser] = useState({code:401});
+  const [search, setSearch] = useState(null);
  
   useEffect(() => {
     fetch("https://dongengin.000webhostapp.com/api/stories")
@@ -49,22 +50,36 @@ function App() {
       )
     }, [])
 
+    const updateSearch = (v) => {
+      console.log(v);
+      return setSearch(v);
+    }
 
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/">
-            <Beranda currRoute="Beranda" user={user} />
+            <Beranda 
+              currRoute="Beranda" 
+              user={user} 
+              updateSearch={updateSearch} />
           </Route>
           <Route path="/daftar">
-            <Daftar currRoute="Daftar" user={user} />
+            <Daftar 
+              currRoute="Daftar" 
+              user={user} />
           </Route>
           <Route path="/masuk" >
-            <Masuk user={user} />
+            <Masuk 
+              user={user} />
           </Route>
           <Route path="/kumpulan-dongeng">
-            <KumpulanDongeng currRoute="KumpulanDongeng" user={user}  />
+            <KumpulanDongeng 
+              currRoute="KumpulanDongeng" 
+              user={user} 
+              search={search}  
+              updateSearch={updateSearch}/>
           </Route>
           <Route path="/story/:route"
             render={({match}) => (
@@ -74,13 +89,16 @@ function App() {
                 />
             )} />
           <Route path="/baca-malin-kundang">
-            <BacaCerita user={user} />
+            <BacaCerita 
+              user={user} />
           </Route>
           <Route path="/profil">
-            <Profile user={user} />
+            <Profile 
+              user={user} />
           </Route>
           <Route path="/koleksi-kartu">
-            <KoleksiKartu user={user} />
+            <KoleksiKartu 
+              user={user} />
           </Route>
         </Switch>
       </Router>

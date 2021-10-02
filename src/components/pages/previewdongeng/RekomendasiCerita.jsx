@@ -60,7 +60,7 @@ const RekomendasiCerita = () => {
                                     </div>
                                 </div>
                                 <Link to={d.route}>
-                                    <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed">
+                                    <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed btnPink">
                                         Baca Buku
                                     </div>
                                 </Link>

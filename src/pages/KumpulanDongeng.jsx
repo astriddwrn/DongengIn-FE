@@ -13,7 +13,9 @@ const KumpulanDongeng = (props) => {
     return (
         <React.Fragment>
             <Header currRoute='KumpulanDongeng' user={props.user}/>
-            <TelusuriCerita/>
+            <TelusuriCerita 
+                search={props.search}
+                updateSearch={props.updateSearch} />
             <img className="absolute top-0 z-10 w-96" src={BlueVector} alt="" />
             <Footer />
         </React.Fragment>

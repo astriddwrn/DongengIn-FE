@@ -15,21 +15,24 @@ const TelusuriCerita = (props) => {
     "Minangkabau", "Betawi", "Jawa", "Jawa Tengah", "Fabel", "Jawa Barat", "Riau", "Riau"
   ]);
   const [cerita, setCerita] = useState([]);
+  const [search, setSearch] = useState(props.search);
 
   useEffect(() => {
-    fetch("https://dongengin.000webhostapp.com/api/stories")
+    fetch(search?"https://dongengin.000webhostapp.com/api/stories?search="+search
+    :"https://dongengin.000webhostapp.com/api/stories")
       .then(res => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setCerita(result);
+          console.log(search);
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
       )
-  }, [])
+  }, [search])
 
   const imagePath = process.env.PUBLIC_URL;
 
@@ -40,19 +43,24 @@ const TelusuriCerita = (props) => {
     arrows : false,
   };
 
+  const searchHandle = () => {
+    setSearch(document.getElementById('search').value);
+    props.updateSearch(document.getElementById('search').value);
+  }
+
     return (
       <>    
         <div className="telusuri mt-60 w-10/12 mx-auto relative z-40">
             <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-5">TELUSURI CERITA</div>
-            <div className="search-cont relative rounded-full">
-              <input className="search bg-cWhite text-cBlack rounded-full  py-3 px-5 w-full mt-5 tracking-widest outline-none pr-16" type="text" placeholder="Mau baca apa hari ini?" />
-              <img className="absolute right-4 top-7 w-8 cursor-pointer " src={SearchIcon} alt="" />
+            <div className="search-cont relative rounded-full" >
+              <input className="search bg-cWhite text-cBlack rounded-full  py-3 px-5 w-full mt-5 tracking-widest outline-none pr-16" id="search" type="text" placeholder="Mau baca apa hari ini?" />
+              <button onClick={() => searchHandle()}><img className="absolute right-4 top-7 w-8 cursor-pointer " src={SearchIcon} alt="" /></button>
             </div>
 
             <div className="slider-cont relative">
               <Slider className="mt-10 px-10" {...settings}>
                 {category.map(d =>
-                <div className="list-category cursor-pointer rounded-full py-1 w-40 text-center text-cBlue bg-cWhite tracking-widest leading-relaxed">{d}</div>
+                  <div className="list-category cursor-pointer rounded-full py-1 w-40 text-center text-cBlue bg-cWhite tracking-widest leading-relaxed btnCateg">{d}</div>
                 )}
                 
               </Slider>
@@ -80,7 +88,7 @@ const TelusuriCerita = (props) => {
                                         </div>
                                     </div>
                                     <Link to={d.route}>
-                                        <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed">
+                                        <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed btnPink">
                                             Baca Buku
                                         </div>
                                     </Link>
