@@ -13,12 +13,10 @@ const PreviewDongeng = (props) => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-
-
     return (
         <React.Fragment>
             <Header user={props.user} />
-            <DeskripsiCerita story={props.story}/>
+            <DeskripsiCerita story={props.story} user={props.user}/>
             <RekomendasiCerita />
             <Footer />
         </React.Fragment>
