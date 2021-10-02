@@ -3,39 +3,26 @@ import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
 
 const DaftarForm = () => {
     
-    const [data, setData] = useState({
-        fullname: "adasdas",
-        birthdate: "",
-        username: "",
-        password: ""
-    });
+    const [fullname, setFullname] = useState('');
+    const [birthdate, setBirthdate] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const data = { fullname, birthdate, username, password };
 
     const sendData = () => {
         fetch('https://dongengin.000webhostapp.com/api/auth/register', {
-          method: 'POST',
-          body: JSON.stringify ({
-            fullname: data.fullname, // Use your own property name / key
-            birthdate: data.birthdate,
-            username: data.username,
-            password: data.password,
-          }),
-        })
-          .then((res) => res.json())
-          .then((result) => setData(result.rows))
-          .catch((err) => console.log('error'))
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log(data);
+        }).then((res) => console.log(res))
+        .catch((err) => console.log(err))
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData();
-    }
-    
-    function handleChange(evt) {
-        const value = evt.target.value;
-        setData({
-            ...data,
-            [evt.target.name]: value,
-        });
     }
 
     return (
@@ -54,8 +41,8 @@ const DaftarForm = () => {
                                 placeholder="Nama Anak"
                                 type="text"
                                 name="fullname"
-                                value={data.fullname}
-                                onChange={handleChange}
+                                value={fullname}
+                                onChange={(e) => setFullname(e.target.value)}
                                 required
                             />
                         </label>
@@ -66,7 +53,8 @@ const DaftarForm = () => {
                                 placeholder="Nama Anak"
                                 type="date"
                                 name="birthdate"
-                                onChange={handleChange}
+                                value={birthdate}
+                                onChange={(e) => setBirthdate(e.target.value)}
                                 required
                             />
                         </label>
@@ -77,7 +65,8 @@ const DaftarForm = () => {
                                 placeholder="Username"
                                 type="text"
                                 name="username"
-                                onChange={handleChange}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
                         </label>
@@ -88,22 +77,14 @@ const DaftarForm = () => {
                                 placeholder="Password"
                                 type="password"
                                 name="password"
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="flex flex-col font-bold text-lg text-cPink mb-2 mt-4" htmlFor="confirmpassword">
-                            Confirm Password
-                            <input
-                                className="w-full font-bold text-cBlack border-2 border-cPink rounded-full mt-2 py-3 px-6"
-                                placeholder="Confirm Password"
-                                type="password"
-                                name="confirmpassword"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                         </label>
                         
-                        <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-16 mx-auto"
+                        <button
+                            className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-16 mx-auto"
                         >Daftar
                         </button>
                     
