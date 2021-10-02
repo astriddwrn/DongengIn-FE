@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import ButtonFavorit from './ButtonFavorit';
@@ -6,6 +6,10 @@ import Star from '../../../assets/images/common/bluestar.png';
 
 const DeskripsiCerita = (props) => {
     const imagePath = process.env.PUBLIC_URL;
+    // const [user, setUser] = useState({code:401});
+    // const [error, setError] = useState(null);
+    // const [isLoaded, setIsLoaded] = useState(false);
+
     
     return (
         <div className="deskripsi mt-48 w-10/12 my-0 mx-auto">
@@ -28,7 +32,7 @@ const DeskripsiCerita = (props) => {
                         <img className={""+((props.story.rating >= 4) ? '' : 'hidden')} src={Star} alt="" />
                         <img className={""+((props.story.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                     </div>
-                    <Link to="/baca-malin-kundang" className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center">Baca Buku</Link>
+                    <a href={`${props.user.code==200? '/baca-malin-kundang'  : '/masuk'} `} className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center">Baca Buku</a>
                     <ButtonFavorit is_favorite={props.story.is_favorite}/>
                 </div>
             </div>

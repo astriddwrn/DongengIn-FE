@@ -8,11 +8,11 @@ import BlueVector from '../assets/images/pages/kumpulan-dongeng/blue-vector.svg'
 
 
 
-const KumpulanDongeng = () => {
+const KumpulanDongeng = (props) => {
 
     return (
         <React.Fragment>
-            <Header currRoute='KumpulanDongeng' />
+            <Header currRoute='KumpulanDongeng' user={props.user}/>
             <TelusuriCerita/>
             <img className="absolute top-0 z-10 w-96" src={BlueVector} alt="" />
             <Footer />

@@ -8,7 +8,7 @@ const Daftar = (props) => {
 
     return (
         <React.Fragment>
-            <Header/>
+            <Header user={props.user} currRoute={props.currRoute}/>
             <DaftarForm/>
         </React.Fragment>
     );

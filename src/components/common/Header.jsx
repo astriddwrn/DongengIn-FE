@@ -7,6 +7,9 @@ const Header = (props) => {
 
   let listener = null
   const [scrollState, setScrollState] = useState("top");
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  // const [user, setUser] = useState({code:401});
 
   useEffect(() => {
     listener = document.addEventListener("scroll", e => {
@@ -26,6 +29,8 @@ const Header = (props) => {
     }
   }, [scrollState])
 
+  
+
     return (
       <>    
         <div className={(scrollState=="top" ? '' : 'bg-cWhite') + " navbar font-sans flex flex-row justify-between items-center px-20 py-5 fixed top-0 w-full"}>
@@ -33,8 +38,15 @@ const Header = (props) => {
             <div className="menu-list flex flex-row justify-between w-5/12 items-center font-semibold text-lg">
                 <Link to="/"><div className={`cursor-pointer ${props.currRoute==='Beranda'? 'active' : ''}`}>Beranda</div></Link>
                 <Link to="/kumpulan-dongeng"><div className={`cursor-pointer ${props.currRoute==='KumpulanDongeng'? 'active' : ''}`}>Kumpulan Dongeng</div></Link>
-                <Link to="/daftar"><div className={`cursor-pointer ${props.currRoute==='Daftar'? 'active' : ''}`}>Daftar</div></Link>
-                <Link to="/masuk"><div className="bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer">Masuk</div></Link>
+                
+                {(props.user.code===200)?
+                  <Link to="/profil"><div className="bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer">Profil</div></Link>
+                :
+                  <><Link to="/daftar"><div className={`cursor-pointer ${props.currRoute==='Daftar'? 'active' : ''}`}>Daftar</div></Link><Link to="/masuk">
+                    <div className="bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer">Masuk</div></Link></>
+                  
+
+                }
             </div>
         </div>
       </>

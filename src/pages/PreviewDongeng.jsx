@@ -17,8 +17,8 @@ const PreviewDongeng = (props) => {
 
     return (
         <React.Fragment>
-            <Header />
-            <DeskripsiCerita story={props.story} />
+            <Header user={props.user} />
+            <DeskripsiCerita story={props.story}/>
             <RekomendasiCerita />
             <Footer />
         </React.Fragment>
