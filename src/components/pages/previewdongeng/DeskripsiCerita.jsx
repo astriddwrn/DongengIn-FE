@@ -6,11 +6,20 @@ import Star from '../../../assets/images/common/bluestar.png';
 
 const DeskripsiCerita = (props) => {
     const imagePath = process.env.PUBLIC_URL;
-    // const [user, setUser] = useState({code:401});
-    // const [error, setError] = useState(null);
-    // const [isLoaded, setIsLoaded] = useState(false);
+    const [bacaLink, setBacaLink] = useState('/masuk');
 
-    
+    useEffect(() => {
+        let isSubscribed = true
+        if(props.user.code==200 && isSubscribed){
+            setBacaLink('/baca-malin-kundang')
+        }else{
+            setBacaLink('/masuk')
+        }
+        return () => {
+          isSubscribed = false
+        }
+      }, [props.user])
+  
     return (
         <div className="deskripsi mt-48 w-10/12 my-0 mx-auto">
             <div className="content flex flex-row justify-center">
@@ -32,7 +41,7 @@ const DeskripsiCerita = (props) => {
                         <img className={""+((props.story.rating >= 4) ? '' : 'hidden')} src={Star} alt="" />
                         <img className={""+((props.story.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                     </div>
-                    <a href={`${props.user.code==200? '/baca-malin-kundang'  : '/masuk'} `} className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center">Baca Buku</a>
+                    <Link to={bacaLink} className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center btnPink">Baca Buku</Link>
                     <ButtonFavorit is_favorite={props.story.is_favorite}/>
                 </div>
             </div>

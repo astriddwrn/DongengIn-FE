@@ -7,25 +7,27 @@ const Header = (props) => {
 
   let listener = null
   const [scrollState, setScrollState] = useState("top");
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [isLoaded, setIsLoaded] = useState(false);
   // const [user, setUser] = useState({code:401});
 
   useEffect(() => {
+    let isSubscribed = true
     listener = document.addEventListener("scroll", e => {
-      var scrolled = document.scrollingElement.scrollTop
-      if (scrolled >= 120) {
+      var scrolled = document.scrollingElement.scrollTop;
+      if (scrolled >= 120 && isSubscribed ) {
         if (scrollState !== "amir") {
           setScrollState("amir")
         }
       } else {
-        if (scrollState !== "top") {
+        if (scrollState !== "top" && isSubscribed) {
           setScrollState("top")
         }
       }
     })
     return () => {
-      document.removeEventListener("scroll", listener)
+      document.removeEventListener("scroll", listener);
+      isSubscribed = false
     }
   }, [scrollState])
 

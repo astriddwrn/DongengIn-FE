@@ -70,7 +70,7 @@ function App() {
               currRoute="Daftar" 
               user={user} />
           </Route>
-          <Route path="/masuk" >
+          <Route exact path="/masuk" >
             <Masuk 
               user={user} />
           </Route>
