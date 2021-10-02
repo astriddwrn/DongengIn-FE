@@ -3,16 +3,24 @@ import Profil from '../../assets/images/common/sidebar/profil.svg'
 import Beranda from '../../assets/images/common/sidebar/beranda.svg'
 import Koleksi from '../../assets/images/common/sidebar/koleksi.svg'
 import Keluar from '../../assets/images/common/sidebar/keluar.svg'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Sidebar = ({ children }) => {
+
+  const [userData, setuserData] = useState([
+    {
+      "fullname":"User Name"
+    }
+  ]);
+
   return (
     <section className="flex">
       <nav className="sidebar p-8 h-screen sticky top-0 flex flex-col">
         <div className="text-2xl flex flex-col justify-center items-center">
           <img className="w-32" src={User} alt="" />
           <p className="mt-4">Halo,</p>
-          <p className="font-bold">Bryan Miraclos!</p>
+          <p className="font-bold">{userData[0].fullname}</p>
         </div>
         <div className="mt-16">
           <Link to="" className="flex items-center mb-10">
