@@ -25,9 +25,11 @@
     min-width: 500px;
 }
 
-
+  .terfavorit .slick-track, .terfavorit .slick-list{
+    height: 500px !important;
+  }
   /* the slides */
-  .slick-slide {
+   .slick-slide {
     margin: 0 16px;
     border-radius: 10px;
   }

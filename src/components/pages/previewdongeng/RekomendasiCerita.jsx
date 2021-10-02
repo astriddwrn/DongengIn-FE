@@ -1,58 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import { Link } from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// import Malin from '../../../assets/images/pages/beranda/terfavorit-malin.svg';
 import Star from '../../../assets/images/common/star.svg';
-
 
 const RekomendasiCerita = () => {
 
-    const [data, setData] = useState([
-        {
-            id: 1,
-            title: "Malin",
-            category: "Minangkabau",
-            rating: 4,
-            image: "terfavorit-malin",
-            link: "https://launching.bncc.net/",
-        },
-        {
-            id: 2,
-            title: "Kundang",
-            category: "Minangkabau",
-            rating: 4,
-            image:"terfavorit-malin",
-            link: "https://launching.bncc.net/",
-        },
-        {
-            id: 3,
-            title: "Malin Kundang",
-            category: "Minangkabau",
-            rating: 4,
-            image: "terfavorit-malin",
-            link: "https://launching.bncc.net/",
-        },
-        {
-            id: 4,
-            title: "Malin Kundang",
-            category: "Minangkabau",
-            rating: 4,
-            image: "terfavorit-malin",
-            link: "https://launching.bncc.net/",
-        },
-        {
-            id: 4,
-            title: "Malin Kundang",
-            category: "Minangkabau",
-            rating: 4,
-            image: "terfavorit-malin",
-            link: "https://launching.bncc.net/",
-        },
-    ]);
-
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [data, setData] = useState([]);
+    const imagePath = process.env.PUBLIC_URL;
+    
+    useEffect(() => {
+        fetch("https://dongengin.000webhostapp.com/api/stories/recomendation")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setIsLoaded(true);
+              setData(result);
+            },
+            (error) => {
+              setIsLoaded(true);
+              setError(error);
+            }
+          )
+      }, [])
 
     const settings = {
         centerMode: true,
@@ -60,7 +34,6 @@ const RekomendasiCerita = () => {
         slidesToShow: 4,
         arrows : false,
       };
-
 
     return (
       <>
@@ -70,8 +43,8 @@ const RekomendasiCerita = () => {
                 <Slider className="h-96 mb-40" {...settings}>
                 {data.map(d =>     
                     
-                <div className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative">
-                        <img className="object-cover object-center h-full w-full" src={require(`../../../assets/images/pages/beranda/${d.image}.svg`).default} alt="" />
+                <div className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative outline-none">
+                        <img className="object-cover object-center h-full w-full" src={`${imagePath}${d.thumbnail}`} alt="" />
                         <div className="title absolute bottom-24 tracking-widest leading-relaxed font-semibold text-cWhite text-2xl left-3">{d.title}</div>
                         <div className="text-content">
                             
@@ -86,7 +59,7 @@ const RekomendasiCerita = () => {
                                         <img className={""+((d.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                                     </div>
                                 </div>
-                                <Link to={d.link}>
+                                <Link to={d.route}>
                                     <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed">
                                         Baca Buku
                                     </div>

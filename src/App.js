@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import PreviewDongengPage from './pages/PreviewDongeng'
@@ -12,6 +12,27 @@ import Profile from './pages/Profil'
 import './styles/main.css'
 
 function App() {
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [stories, setStories] = useState([]);
+  
+
+  useEffect(() => {
+    fetch("https://dongengin.000webhostapp.com/api/stories")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setStories(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+    }, [])
+
   return (
     <>
       <Router>
@@ -20,7 +41,7 @@ function App() {
             <Beranda currRoute="Beranda" />
           </Route>
           <Route path="/daftar">
-            <Daftar/>
+            <Daftar currRoute="Daftar" />
           </Route>
           <Route path="/masuk">
             <Masuk/>
@@ -28,10 +49,13 @@ function App() {
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng currRoute="KumpulanDongeng" />
           </Route>
-          <Route path="/malin-kundang">
-            <PreviewDongengPage />
-          </Route>
-          <Route path="/story/malin_kundang">
+          <Route path="/story/:route"
+            render={({match}) => (
+              <PreviewDongengPage 
+              story={stories.find(p => p.route == '/story/'+match.params.route)} 
+                />
+            )} />
+          <Route path="/baca-malin-kundang">
             <BacaCerita />
           </Route>
           <Route path="/profile">
