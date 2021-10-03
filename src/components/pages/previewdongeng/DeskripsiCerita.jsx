@@ -41,7 +41,8 @@ const DeskripsiCerita = (props) => {
                         <img className={""+((props.story.rating >= 4) ? '' : 'hidden')} src={Star} alt="" />
                         <img className={""+((props.story.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
                     </div>
-                    <Link to={bacaLink} className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center btnPink">Baca Buku</Link>
+                    {/* <Link to={bacaLink} className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center btnPink">Baca Buku</Link> */}
+                    <Link to='/baca-malin-kundang' className="mb-5 font-extrabold text-2xl tracking-wider text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 w-52 text-center btnPink">Baca Buku</Link>
                     <ButtonFavorit is_favorite={props.story.is_favorite}/>
                 </div>
             </div>

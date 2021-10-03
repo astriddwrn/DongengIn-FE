@@ -42,7 +42,7 @@ const CeritaTerfavorit = () => {
                 <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-5">CERITA FAVORIT</div>
                 <Slider className="h-80 mb-40" {...settings}>
                 {data.map(d =>     
-                    <div className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative outline-none">
+                    <div key={d.id} className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative outline-none">
                         <img className="object-cover object-center h-full w-full" src={`${imagePath}${d.thumbnail}`} alt="" />
                         <div className="title absolute bottom-24 tracking-widest leading-relaxed font-semibold text-cWhite text-2xl left-3">{d.title}</div>
                         <div className="text-content">

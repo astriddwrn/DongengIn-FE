@@ -41,7 +41,7 @@ const Header = (props) => {
                 <Link to="/"><div className={`cursor-pointer ${props.currRoute==='Beranda'? 'active' : ''}`}>Beranda</div></Link>
                 <Link to="/kumpulan-dongeng"><div className={`cursor-pointer ${props.currRoute==='KumpulanDongeng'? 'active' : ''}`}>Kumpulan Dongeng</div></Link>
                 
-                {(props.user.code===200)?
+                {(props.user.fullname)?
                   <Link to="/profil"><div className="bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer">Profil</div></Link>
                 :
                   <><Link to="/daftar"><div className={`cursor-pointer ${props.currRoute==='Daftar'? 'active' : ''}`}>Daftar</div></Link><Link to="/masuk">

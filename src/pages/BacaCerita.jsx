@@ -14,12 +14,14 @@ import Popup from '../components/pages/baca-cerita/Popup';
 
 
 const BacaCerita = (props) => {
-    const [pagenum, setPagenum] = useState(1);
+    const [pagenum, setPagenum] = useState(9);
     const totalPage = 9;
     const minPage = 1;
     const maxPage = 9;
     const [koin, setKoin] = useState(0);
     const [popup, setPopup] = useState(false);
+
+    const data = { 'type' : 'add_poin', 'value' : koin };
 
     const nextPage = () => {
         if (pagenum==9){
@@ -37,24 +39,51 @@ const BacaCerita = (props) => {
 
     const totalKoin = (v) => {
         setKoin(koin + v);
+        // console.log('koin:'+koin);
     }
     const closePopup = () => {
         return setPopup(false)
+    }
+    
+    const encode = (data) => {     
+        var formBody = [];
+        for (var property in data) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        return formBody;
+    }
+    
+    const sendData = async () => {
+        await fetch('https://dongengin.000webhostapp.com/api/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(data)
+        }) 
+    }
+
+    const handleSubmit = () => {
+        sendData();
     }
 
     return (
         <React.Fragment>
             <HeaderBaca pagenum={pagenum} totalPage={totalPage} user={props.user} />
             <CeritaPage1 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage} totalKoin={totalKoin}  />
-            <CeritaPage2 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage3 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage4 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage5 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage6 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage7 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage8 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <CeritaPage9 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  />
-            <Popup koin={koin} popup={popup} closePopup={closePopup} />
+            <CeritaPage2 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage3 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage4 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage5 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage6 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage7 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage8 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <CeritaPage9 pagenum={pagenum} totalPage={totalPage} nextPage={nextPage} prevPage={prevPage}  totalKoin={totalKoin}/>
+            <Popup koin={koin} popup={popup} closePopup={closePopup} handleSubmit={handleSubmit} />
         </React.Fragment>
     );
 

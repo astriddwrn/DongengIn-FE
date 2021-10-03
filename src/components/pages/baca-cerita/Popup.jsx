@@ -1,15 +1,52 @@
 import React, { useState, useCallback } from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 import closeBtn from '../../../assets/images/pages/baca-cerita/popup-closeBtn.svg';
 import graystar from '../../../assets/images/common/graystar.svg';
 import bluestar from '../../../assets/images/common/bluestar.svg';
 
-
 const Popup = (props) => {
     const history = useHistory();
-    const handleOnClick = useCallback(() => history.push('/malin-kundang'), [history]);
+    const redirect = useCallback(() => history.push('/'), [history]);
     const [rating, setRating] = useState(0);
+
+    const data = { 'type' : 'set_rating', 'value' : rating };
+
+    const encode = (data) => {     
+        var formBody = [];
+        for (var property in data) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        return formBody;
+    }
+    
+    const sendData = async () => {
+        var postData = await fetch('https://dongengin.000webhostapp.com/api/story/5', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(data)
+        })
+        if(postData.status===200){
+            // console.log('posted');
+        }
+    }
+
+    const handleSubmit = () => {
+        sendData();
+    }
+
+    const handleOnClick = () => {
+        props.closePopup();
+        props.handleSubmit();
+        handleSubmit();
+        redirect();
+    }
 
     return (
         <div className={`popup  ${props.popup? 'block' : 'hidden'} `}>
@@ -27,8 +64,8 @@ const Popup = (props) => {
                     <img src={`${rating>=4? bluestar : graystar} `} className={``} onClick={()=>setRating(4)} />
                     <img src={`${rating>=5? bluestar : graystar} `} className={``} onClick={()=>setRating(5)} />
                 </div>
-                <div className="submitBtn bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer w-60 mx-auto cursor-pointer"
-                    onClick={handleOnClick}>Selesai</div>
+                <div to className="submitBtn bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer w-60 mx-auto cursor-pointer"
+                    onClick={()=>handleOnClick()}>Selesai</div>
             </div>
         </div>
     );

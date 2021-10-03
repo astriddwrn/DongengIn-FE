@@ -17,7 +17,7 @@ function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stories, setStories] = useState([]);
-  const [user, setUser] = useState({code:401});
+  const [user, setUser] = useState({fullname: ''});
   
   window.setUser = setUser;
 
@@ -78,7 +78,7 @@ function App() {
               user={user} />
           </Route>
           <Route path="/masuk" >
-            {user.code === 200 ? console.log("masukpakeko") : <Masuk user={user} />}
+            {user.fullname ? console.log("masukpakeko") : <Masuk user={user} />}
           </Route>
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng 

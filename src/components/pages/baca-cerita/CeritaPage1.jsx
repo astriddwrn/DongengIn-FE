@@ -30,15 +30,6 @@ const CeritaPage1 = (props) => {
       setTimeout(function(){ setCaptionVisible(true) }, 200);
     }
 
-    // const correctAnswerFunction = () => {
-    //   if(!answer){
-    //     setAnswer(2);
-    //     props.totalKoin(100);
-    //     console.log("test");
-    //   }
-    //   return;
-    // }
-
     return (
         <div className={`ceritaPage w-screen h-screen absolute bottom-0 overflow-hidden ${props.pagenum===1? "fadeIn z-20" : "fadeOut z-10"}`}>
           <img className="object-cover position-center w-screen h-screen" src={Background} alt="" />
@@ -55,24 +46,26 @@ const CeritaPage1 = (props) => {
             <div className={`caption-cont absolute bottom-10 text-lg w-8/12 left-1/2 transform -translate-x-1/2 bg-cWhite py-3 px-8 rounded-lg tracking-widest leading-relaxed + ${currCaption==4? "fadeIn text-center" : "fadeOut"}`}>
               Berapa jumlah burung yang ada di gambar ini?
               <div className="flex flex-wrap 8/12 justify-center mt-3">
-                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===1? "incorrectAns" : ""} `}
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg  + 
+                      ${answer===1? "incorrectAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                       onClick={()=> 
                         !answer? setAnswer(1) :  null 
-                        // answerFeedback(1);
                       } >Satu</div>
-                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer? "correctAns" : ""} `}
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg  + 
+                      ${answer? "correctAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                       onClick={()=> {
                         if(!answer){
                               setAnswer(2);
                               props.totalKoin(100);
                             }
-                      }}>Tiga</div>
-                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===3? "incorrectAns" : ""} `}
+                      }}>Empat</div>
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg  + 
+                      ${answer===3? "incorrectAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                       onClick={()=> 
                         !answer? setAnswer(3) : null
-                        // answerFeedback(3);
-                        }>Empat</div>
-                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg cursor-pointer + ${answer===4? "incorrectAns" : ""} `}
+                        }>Tiga</div>
+                    <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-28 mx-3 rounded-lg  + 
+                      ${answer===4? "incorrectAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                       onClick={()=> 
                         !answer? setAnswer(4) : null
                        

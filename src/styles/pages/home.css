@@ -59,6 +59,20 @@
   transition: all .3s ease !important;
 }
 
+.btnBlue{
+  color: white!important;
+  background-color: #1F83B5 !important;
+  border: solid 2px transparent!important;
+  transition: all .3s ease !important;
+}
+
+.btnBlue:hover{
+  color: #1F83B5 !important;
+  background-color: white !important;
+  border: solid 2px #1F83B5 !important;
+  transition: all .3s ease !important;
+}
+
 .hero{
     background: linear-gradient(180deg,  rgba(65, 189, 208, 0.5) 0%, rgba(65, 189, 208, 0) 100%);
     height: 100vh;
@@ -71,12 +85,12 @@
 .terfavorit .slick-track, .terfavorit .slick-list{
   height: 500px !important;
 }
-/* the slides */
+
   .slick-slide {
   margin: 0 16px;
   border-radius: 10px;
 }
-/* the parent */
+
 .slick-list {
   margin: 0 -16px;
 }
