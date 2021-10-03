@@ -30,6 +30,7 @@ function App() {
         (result) => {
           setIsLoaded(true);
           setStories(result);
+          setTimeout(()=>{console.log(stories)}, 3000)
         },
         (error) => {
           setIsLoaded(true);
@@ -61,6 +62,7 @@ function App() {
       console.log(v);
       return setSearch(v);
     }
+
 
   return (
     <>

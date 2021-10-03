@@ -12,10 +12,25 @@ const TelusuriCerita = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [category, setCategory] = useState([
-    "Minangkabau", "Betawi", "Jawa", "Jawa Tengah", "Fabel", "Jawa Barat", "Riau", "Riau"
+    "loading", "loading", "loading"
   ]);
   const [cerita, setCerita] = useState([]);
   const [search, setSearch] = useState(props.search);
+
+  // useEffect(() => {
+  //   fetch("https://dongengin.000webhostapp.com/api/categories")
+  //     .then(res => res.json())
+  //     .then(
+  //       (result) => {
+  //         setIsLoaded(true);
+  //         setCategory(result);
+  //       },
+  //       (error) => {
+  //         setIsLoaded(true);
+  //         setError(error);
+  //       }
+  //     )
+  // }, [])
 
   useEffect(() => {
     fetch(search?"https://dongengin.000webhostapp.com/api/stories?search="+search
@@ -77,7 +92,7 @@ const TelusuriCerita = (props) => {
                           
                           <div className="subtext-cont absolute bottom-5 flex flex-row items-center justify-between w-full px-3">
                               <div>
-                                  <div className="category tracking-widest leading-relaxed mb-4">{d.category}</div>
+                                  <div className="category tracking-widest leading-relaxed mb-2">{d.categories[0]}</div>
                                   <div className="rating flex flex-row">
                                       <img className={""+((d.rating >= 1) ? '' : 'hidden')} src={Star} alt="" />
                                       <img className={""+((d.rating >= 2) ? '' : 'hidden')} src={Star} alt="" />

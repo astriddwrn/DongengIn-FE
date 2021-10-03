@@ -31,6 +31,20 @@
   transition: all .3s ease !important;
 }
 
+.btnReversePink:hover{
+  color: white!important;
+  background-color: #E15B7E !important;
+  border: solid 2px transparent!important;
+  transition: all .3s ease !important;
+}
+
+.btnReversePink{
+  color: #E15B7E !important;
+  background-color: white !important;
+  border: solid 2px #E15B7E !important;
+  transition: all .3s ease !important;
+}
+
 .btnPurple{
   color: white!important;
   background-color: #A190FF !important;
