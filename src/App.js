@@ -7,7 +7,7 @@ import KumpulanDongeng from './pages/KumpulanDongeng'
 import Daftar from './pages/Daftar'
 import Masuk from './pages/Masuk'
 import BacaCerita from './pages/BacaCerita'
-import Profile from './pages/Profil'
+import Dashboard from './pages/Dashboard'
 import KoleksiKartu from './pages/KoleksiKartu'
 
 import './styles/main.css'
@@ -99,12 +99,14 @@ function App() {
               user={user} />
           </Route>
           <Route path="/profil">
-            <Profile 
-              user={user} />
+            <Dashboard 
+              user={user}
+              currRoute="Dashboard"/>
           </Route>
           <Route path="/koleksi-kartu">
             <KoleksiKartu 
-              user={user} />
+              user={user}
+              currRoute="KoleksiKartu"/>
           </Route>
         </Switch>
       </Router>
