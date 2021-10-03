@@ -42,14 +42,14 @@ const CeritaTerfavorit = () => {
                 <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-5">CERITA FAVORIT</div>
                 <Slider className="h-80 mb-40" {...settings}>
                 {data.map(d =>     
-                    <div className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative outline-none">
+                    <div key={d.id} className="w-60 h-96 bg-cBlack rounded-lg overflow-hidden relative outline-none">
                         <img className="object-cover object-center h-full w-full" src={`${imagePath}${d.thumbnail}`} alt="" />
                         <div className="title absolute bottom-24 tracking-widest leading-relaxed font-semibold text-cWhite text-2xl left-3">{d.title}</div>
                         <div className="text-content">
             
                             <div className="subtext-cont absolute bottom-5 flex flex-row items-center justify-between w-full px-3">
                                 <div>
-                                    <div className="category tracking-widest leading-relaxed mb-4">{d.category}</div>
+                                    <div className="category tracking-widest leading-relaxed mb-2">{d.categories[0]}</div>
                                     <div className="rating flex flex-row">
                                         <img className={""+((d.rating >= 1) ? '' : 'hidden')} src={Star} alt="" />
                                         <img className={""+((d.rating >= 2) ? '' : 'hidden')} src={Star} alt="" />

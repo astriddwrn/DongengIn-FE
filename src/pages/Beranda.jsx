@@ -14,7 +14,7 @@ const Beranda = (props) => {
             <Header currRoute={props.currRoute} user={props.user} />
             <Hero updateSearch={props.updateSearch} />
             <CeritaTerfavorit className="mt-96" />
-            <div className={`${props.user.code==200? 'hidden' : 'block'}`}>
+            <div className={`${props.user.fullname? 'hidden' : 'block'}`}>
                 <YukMasuk />
             </div>
             <PapanPeringkat />

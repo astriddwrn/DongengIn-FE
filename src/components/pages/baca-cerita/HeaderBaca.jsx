@@ -6,15 +6,6 @@ import CaptionBtn from '../../../assets/images/pages/baca-cerita/header-caption-
 import VoiceBtn from '../../../assets/images/pages/baca-cerita/header-voice-btn.svg';
 
 const HeaderBaca = (props) => {
-
-    const [user, setUser] = useState(
-        {
-            username:"username123",
-            saved_story:[1, 3, 4],    // story id
-            points: 200,
-            coins: 100
-        },
-    );
     const history = useHistory();
 
     return (
@@ -27,7 +18,7 @@ const HeaderBaca = (props) => {
                 {props.pagenum}/{props.totalPage}
             </div>
             <div className="flex flex-row items-center">
-                <div>{user.coins} Koin</div>
+                <div>{props.user.coins} Koin</div>
                 <img className="mx-5 w-9" src={CaptionBtn} alt="" />
                 <img className="w-9" src={VoiceBtn} alt="" />
             </div>
