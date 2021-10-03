@@ -12,7 +12,7 @@ const TelusuriCerita = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [category, setCategory] = useState([
-    "loading", "loading", "loading"
+    'Minangkabau', 'Legenda', 'Jawa', 'Betawi', 'Jawa Tengah', 'Jawa Barat', 'Fabel', 'Hikayat', 'Jagoan',
   ]);
   const [cerita, setCerita] = useState([]);
   const [search, setSearch] = useState(props.search);
@@ -56,11 +56,17 @@ const TelusuriCerita = (props) => {
     centerPadding: '10px',
     slidesToShow: 7,
     arrows : false,
+    initialSlide: 5
   };
 
   const searchHandle = () => {
     setSearch(document.getElementById('search').value);
     props.updateSearch(document.getElementById('search').value);
+  }
+
+  const searchCateg = (v) => {
+    setSearch(v);
+    props.updateSearch(v);
   }
 
     return (
@@ -75,7 +81,8 @@ const TelusuriCerita = (props) => {
             <div className="slider-cont relative">
               <Slider className="mt-10 px-10" {...settings}>
                 {category.map((d, index ) =>
-                  <div key={index} className="list-category cursor-pointer rounded-full py-1 w-40 text-center text-cBlue bg-cWhite tracking-widest leading-relaxed btnCateg">{d}</div>
+                  <div key={index} className="list-category cursor-pointer rounded-full py-1 w-40 text-center text-cBlue bg-cWhite tracking-widest leading-relaxed btnCateg"
+                  onClick={()=>searchCateg(d)}>{d}</div>
                 )}
                 
               </Slider>
