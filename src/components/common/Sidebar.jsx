@@ -5,10 +5,12 @@ import Beranda from '../../assets/images/common/sidebar/beranda.svg'
 import KoleksiNon from '../../assets/images/common/sidebar/koleksinon.svg'
 import Koleksi from '../../assets/images/common/sidebar/koleksi.svg'
 import Keluar from '../../assets/images/common/sidebar/keluar.svg'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useCallback} from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 const Sidebar = ({ user, children, currRoute }) => {
+  // const history = useHistory();
+  // const redirect = useCallback(() => history.push('/'), [history]);
     
     const sendData = async () => {
         var logout = await fetch('https://dongengin.000webhostapp.com/api/auth/logout', {
@@ -20,6 +22,7 @@ const Sidebar = ({ user, children, currRoute }) => {
             })
             if (logout.status == 200) {
                 console.log("berhasil logout");
+                document.location.href="/";
             }
     }
 
@@ -57,7 +60,7 @@ const Sidebar = ({ user, children, currRoute }) => {
             <button className="flex items-center pl-2">
               <img className="w-7" src={Keluar} alt="" />
               <p className="text-lg font-bold ml-4 text-cPurple">Keluar</p>
-            </button>
+            </button>     
           </form>
         </div>
       </nav>

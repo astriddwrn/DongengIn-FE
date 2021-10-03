@@ -6,8 +6,6 @@ import TelusuriCerita from '../components/pages/kumpulan-dongeng/TelusuriCerita'
 
 import BlueVector from '../assets/images/pages/kumpulan-dongeng/blue-vector.svg';
 
-
-
 const KumpulanDongeng = (props) => {
 
     return (

@@ -31,6 +31,7 @@ const MasukForm = () => {
             })
             if (login.status == 200) {
                 console.log("berhasil log in");
+                document.location.href="/profil";
                 window.setUser([
                     {
                         code : 200,

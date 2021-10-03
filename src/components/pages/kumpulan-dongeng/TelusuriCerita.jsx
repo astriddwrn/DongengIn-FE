@@ -17,21 +17,6 @@ const TelusuriCerita = (props) => {
   const [cerita, setCerita] = useState([]);
   const [search, setSearch] = useState(props.search);
 
-  // useEffect(() => {
-  //   fetch("https://dongengin.000webhostapp.com/api/categories")
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         setIsLoaded(true);
-  //         setCategory(result);
-  //       },
-  //       (error) => {
-  //         setIsLoaded(true);
-  //         setError(error);
-  //       }
-  //     )
-  // }, [])
-
   useEffect(() => {
     fetch(search?"https://dongengin.000webhostapp.com/api/stories?search="+search
     :"https://dongengin.000webhostapp.com/api/stories")
