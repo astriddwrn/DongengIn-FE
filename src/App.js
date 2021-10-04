@@ -56,7 +56,7 @@ function App() {
           setError(error);
         }
      )
-    }, [])
+    }, [user])
 
     const updateSearch = (v) => {
       console.log(v);

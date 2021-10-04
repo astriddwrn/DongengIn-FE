@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import Coin from '../../../assets/images/pages/dashboard/coin.svg'
+import BeliModal from './BeliModal'
 /* import { data } from 'autoprefixer'; */
 
 const KoleksiKartus = (props) => {
@@ -66,31 +66,35 @@ const KoleksiKartus = (props) => {
   
   useEffect(() => {
     setcheckKartu(props.user.cards);
-    console.log(checkKartu);
+    /* console.log(checkKartu); */
   }, [props.user])
+
+  const [modal, setModal] = useState(1);
+  const [title, setTitle] = useState("Doni");
+  const [coin, setCoin] = useState(200);
+
+  function modalCard(title, coin, thumbnail) {
+    
+  }
 
   return (
     <>
+      <BeliModal state={modal} title={title} coin={coin}/>
       <header className="w-full text-3xl font-bold px-4 py-3 bg-cWhite">
         Koleksi Kartu
       </header>
       <main className="bg-cLightBlue w-full min-h-screen p-10 grid grid-cols-4 grid-rows-4 gap-10">
-
-        {/* {kartu.map(d =>
-          <div className="bg-cWhite p-4 rounded-xl relative">
-            <div className="w-full absolute font-extrabold text-xl text-center text-cWhite bottom-8 left-0">{d.title}</div>
-            <img className={"w-64 " + ((props.user.cards).indexOf(d.id) > -1 ? "filter blur-sm brightness-50" : "")} src={`${imagePath}${d.thumbnail}`} alt="" />
-          </div>
-        )} */}
-
         {checkKartu ?
-           (kartu.map(d =>
-             <div className="bg-cWhite p-4 rounded-xl relative">
-               {/*  <div className="flex flex-row items-center absolute">
-                 <div className="font-extrabold">{d.price}</div>
-               </div> */}
+          (kartu.map(d =>
+            <div on={e => modalCard()} className="bg-cWhite p-4 rounded-xl relative z-10">
+              <div className={"w-full absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " + ((checkKartu).indexOf(d.id) > -1 ? "" : "hidden")}>
+                <div className="flex flex-row items-center justify-center">
+                  <div className="font-extrabold text-cWhite text-4xl mr-2">{d.price}</div>
+                  <img className="w-8" src={Coin} alt="" />
+                </div>
+              </div>
                 <div className="w-full absolute font-extrabold text-xl text-center text-cWhite bottom-8 left-0">{d.title}</div>
-                <img className={"w-64 " + ((checkKartu).indexOf(d.id) > -1 ? "filter blur-sm brightness-50" : "")} src={`${imagePath}${d.thumbnail}`} alt="" /> 
+                <img className={"w-64 " + ((checkKartu).indexOf(d.id) > -1 ? "filter blur-sm brightness-50 z-0" : "")} src={`${imagePath}${d.thumbnail}`} alt="" /> 
             </div>
           )): <div className="font-semibold text-2xl text-cPurple mt-4">Loading...</div>}
         
