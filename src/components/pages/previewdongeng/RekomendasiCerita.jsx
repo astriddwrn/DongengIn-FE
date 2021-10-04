@@ -3,10 +3,9 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import Star from '../../../assets/images/common/star.svg';
 
-const RekomendasiCerita = () => {
+    const RekomendasiCerita = () => {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -14,35 +13,35 @@ const RekomendasiCerita = () => {
     const imagePath = process.env.PUBLIC_URL;
     
     useEffect(() => {
-      let isSubscribed = true;
-      if(isSubscribed) {
+    let isSubscribed = true;
+    if(isSubscribed) {
         fetch("https://dongengin.000webhostapp.com/api/stories/recomendation")
-          .then(res => res.json())
-          .then(
+        .then(res => res.json())
+        .then(
             (result) => {
-              setIsLoaded(true);
-              setData(result);
+            setIsLoaded(true);
+            setData(result);
             },
             (error) => {
-              setIsLoaded(true);
-              setError(error);
+            setIsLoaded(true);
+            setError(error);
             }
-          )
-      }
-      return () => {
+        )
+    }
+    return () => {
         isSubscribed = false
-      }
-      }, [])
+    }
+    }, [])
 
     const settings = {
         centerMode: true,
         centerPadding: '60px',
         slidesToShow: 4,
         arrows : false,
-      };
+    };
 
     return (
-      <>
+        <>
         <div className="terfavorit mt-48 w-10/12 my-0 mx-auto">
             <div>
                 <div className="text-4xl font-extrabold tracking-widest leading-relaxed mb-5">REKOMENDASI CERITA</div>
@@ -78,8 +77,8 @@ const RekomendasiCerita = () => {
                 </Slider>
             </div>
         </div>
-      </>
-    );
+        </>
+     );
 };
 
 export default RekomendasiCerita;

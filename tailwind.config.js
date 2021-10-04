@@ -11,9 +11,7 @@ module.exports = {
       cBlack: '#101010',
       cPurple: '#A190FF',
       cBlue: '#1F83B5',
-    },
-    backgroundImage:{
-      // 'bgSpace': "linear-gradient(195.99deg, #0C131B -57.79%, #0054A5 49.18%, #CDD8DD 151.55%)",
+      cOverlay: 'rgba(51, 51, 51, 0.5)',
     },
     boxShadow:{
       'bsRocket': "0px 0px 60px rgba(0, 0, 0, 0.1);",
