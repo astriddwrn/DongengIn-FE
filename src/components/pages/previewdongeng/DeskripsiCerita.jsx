@@ -25,9 +25,6 @@ const DeskripsiCerita = (props) => {
             setIsLoaded(true);
             setCurrStory(result);
             setFav(result.is_favorite);
-            // console.log(result.is_favorite);
-            // console.log(result);
-            // console.log(fav);
             },
             (error) => {
               setIsLoaded(true);
@@ -135,14 +132,9 @@ const DeskripsiCerita = (props) => {
                             onClick={()=>handleHistory()}>Baca Buku</Link>
 
                         {fav=='1'?
-                            // <button className="font-extrabold text-2xl tracking-widest text-cWhite bg-cPink rounded-full mr-8 py-3 px-8 btnReversePink">
-                                <img className="w-14 cursor-pointer" src={FavoriteFill} onClick={()=> handleFavorite(false)} alt="" />
-                            // {/* </button> */}
+                            <img className="w-14 cursor-pointer" src={FavoriteFill} onClick={()=> handleFavorite(false)} alt=""  />
                         :
-                            // <button className="text-cPink font-extrabold text-2xl tracking-wide font-extrabold border-2 border-cPink rounded-full mr-8 py-3 px-8 btnPink"
-                            //  >
-                                <img className="w-14 cursor-pointer"  onClick={()=> handleFavorite(true)} src={FavoriteEmpty} alt="" />
-                            // </button>
+                            <img className="w-14 cursor-pointer"  onClick={()=> handleFavorite(true)} src={FavoriteEmpty} alt="" />
                         }
                     </div>
                 </div>

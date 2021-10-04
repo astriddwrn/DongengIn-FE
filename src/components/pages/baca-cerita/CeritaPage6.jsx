@@ -55,7 +55,7 @@ const CeritaPage6 = (props) => {
                       <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-48 mx-3 rounded-lg  + 
                         ${answer===2? "incorrectAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                         onClick={()=> 
-                          !answer===2? setAnswer(2) : null
+                          !answer? setAnswer(2) : null
                           }>Diam Saja</div>
 
                       <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-48 mx-3 rounded-lg  + 

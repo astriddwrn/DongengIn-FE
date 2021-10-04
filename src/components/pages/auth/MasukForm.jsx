@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
+
 import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
-import googlelogo from '../../../assets/images/common/googlelogo.png';
 
 const MasukForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const loginData = { username, password };
 
@@ -22,17 +22,20 @@ const MasukForm = () => {
     
     const sendData = async () => {
         var login = await fetch('https://dongengin.000webhostapp.com/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                },
-                credentials: 'include',
-                body: encode(loginData)
-            })
-            if (login.status == 200) {
-                console.log("berhasil log in");
-                document.location.href="/profil";
-            }
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(loginData)
+        })
+        if (login.status == 200) {
+            setError('');
+            document.location.href="/profil";
+        }
+        else{
+            setError('Username atau password yang kamu masukan salah.')
+        }
     }
 
     const usernameValidation = (e) => {
@@ -75,6 +78,7 @@ const MasukForm = () => {
                 <div className="w-2/4 px-32">
                     <div className="flex flex-col">
                         <div className="text-cPink text-5xl text-center font-extrabold mt-8 mb-8">Masuk</div>
+                        <div className="text-center error-msg">{error}</div>
                         <label className="flex flex-col font-bold text-lg text-cPink mb-2 mt-4" htmlFor="username">
                             Username
                             <input
@@ -105,9 +109,6 @@ const MasukForm = () => {
                         <span id="password-error" className="error-msg"></span>
                         <div className="text-cPink text-lg font-bold mt-2">Kamu belum punya akun? <span><a href="" className="text-cPurple underline">Yuk Daftar</a></span></div>
                         <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-12 mx-auto btnPurple">Masuk</button>
-                        <button className="googlebutton font-bold text-lg flex flex-row justify-center items-center mb-8 mx-auto">
-                            <span><img className="w-6 mr-5" src={googlelogo} alt="" /></span>Masuk dengan Google
-                        </button>
                     </div>
                 </div>
                 <img className="object-cover w-2/4 fixed right-0 h-screen" src={bg} alt="" />

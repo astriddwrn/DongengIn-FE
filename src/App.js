@@ -19,8 +19,6 @@ function App() {
   const [stories, setStories] = useState([]);
   const [user, setUser] = useState({fullname: ''});
   
-  window.setUser = setUser;
-
   const [search, setSearch] = useState(null);
  
   useEffect(() => {
