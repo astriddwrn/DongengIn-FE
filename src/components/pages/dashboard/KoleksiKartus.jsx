@@ -69,20 +69,30 @@ const KoleksiKartus = (props) => {
     const [modal, setModal] = useState(0);
     const [title, setTitle] = useState("Loading...");
     const [price, setPrice] = useState(0);
+    const [cardid, setCardid] = useState(0);
 
-    function modalCard(title, price) {
+    function modalCard(title, price, id) {
         setModal(1);
         setTitle(title);
         setPrice(price);
+        setCardid(id);
+        console.log('id:'+id);
+        console.log(checkKartu);
     }
 
     function closeModal() {
         setModal(0);
     }
 
+    function updateKartu(v){
+        const temp = checkKartu.concat([v]);
+        setcheckKartu(temp);
+        console.log(temp);
+    }
+
     return (
         <>
-        <BeliModal closeModal={closeModal} state={modal} title={title} price={price}/>
+        <BeliModal closeModal={closeModal} state={modal} title={title} price={price} cardid={cardid} updateKartu={updateKartu}/>
         <header className="w-full text-3xl font-bold px-4 py-3 bg-cWhite">
             Koleksi Kartu
         </header>
@@ -91,7 +101,7 @@ const KoleksiKartus = (props) => {
             (kartu.map(d =>
                 <div onClick={e => {
                 if ((checkKartu).indexOf(d.id) <= -1) {
-                    modalCard(d.title, d.price);
+                    modalCard(d.title, d.price, d.id);
                 }
                 }} key={d.id} className="bg-cWhite p-4 rounded-xl relative z-10 cursor-pointer">
                 <div className={"w-full absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " + ((checkKartu).indexOf(d.id) > -1 ? "hidden" : "")}>

@@ -3,8 +3,7 @@ import Close from '../../../assets/images/common/close.svg'
 import Coin from '../../../assets/images/pages/dashboard/coin.svg'
 
 const BeliModal = (props) => {
-    const useCoin = { 'type': 'use_coin', 'value': props.price };
-    console.log(useCoin);
+    
     const encode = (data) => {     
         var formBody = [];
         for (var property in data) {
@@ -16,8 +15,9 @@ const BeliModal = (props) => {
         return formBody;
     }
 
-    const sendData = async () => {
-        var BeliKartu = await fetch('https://dongengin.000webhostapp.com/api/user', {
+    const sendCoin = async () => {
+        let useCoin = { 'type': 'use_coin', 'value': props.price };
+        let post = await fetch('https://dongengin.000webhostapp.com/api/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -25,14 +25,30 @@ const BeliModal = (props) => {
             credentials: 'include',
             body: encode(useCoin)
         })
-        if (BeliKartu.status == 200) {
-            console.log(BeliKartu);
+        if (post.status == 200) {
             props.closeModal();
         }
     }
 
+    console.log('props:'+props.cardid);
+    const sendCard = async () => {
+        let addCard = { 'type': 'add_card', 'value': props.cardid };
+        let post = await fetch('https://dongengin.000webhostapp.com/api/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(addCard)
+        })
+        if (post.status == 200) {
+            props.updateKartu(props.cardid);
+        }
+    }
+
     const handleSubmit = () => {
-        sendData();
+        sendCoin();
+        sendCard();
     }
 
     return (
