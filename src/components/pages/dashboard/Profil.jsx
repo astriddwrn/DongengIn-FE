@@ -75,12 +75,12 @@ const Profil = (props) => {
 
           {history ? history.map(d =>
             <div key={d.id} className="flex justify-between items-center mb-4">
-              <p className="text-lg font-extrabold">{d.title}</p>
+              <p className="text-lg font-semibold">{d.title}</p>
               <Link
-                className="text-cWhite bg-cPink px-6 py-2 font-extrabold rounded-3xl"
+                className="text-cWhite bg-cPink px-7 py-1 font-semibold rounded-3xl btnPink"
                 to={d.route}
               >
-                Baca Buku
+                Lihat
               </Link>
             </div>
             ) : <div className="font-semibold text-2xl text-cPurple mt-4">Loading...</div>}

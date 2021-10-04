@@ -27,7 +27,7 @@ const Hero = (props) => {
       <>
       <img className=" -bottom-96 absolute w-full z-30" src={Grass} alt="" />
         <div className="hero container w-full relative overflow-hidden">
-          <img className="absolute w-96 z-20" src={Castle} alt="" 
+          <img className="absolute w-96 z-20 -bottom-40" src={Castle} alt="" 
             style={{transform: `translate(${offsetY*0.05}px,${offsetY*0.7}px)`}}/>
           
           <img className="-bottom-60 absolute w-full z-10" src={Mountain1} alt="" 

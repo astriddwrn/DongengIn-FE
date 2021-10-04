@@ -32,17 +32,40 @@ const MasukForm = () => {
             if (login.status == 200) {
                 console.log("berhasil log in");
                 document.location.href="/profil";
-                window.setUser([
-                    {
-                        code : 200,
-                    }
-                ]);
             }
+    }
+
+    const usernameValidation = (e) => {
+        if(!username){
+            document.getElementById('username-error').textContent = 'Username tidak boleh kosong.';
+            return false;
+        } else{
+            document.getElementById('username-error').textContent = '';
+            return true;
+        }
+    }
+
+    const passwordValidation = (e) => {
+        if(!password){
+            document.getElementById('password-error').textContent = 'Password tidak boleh kosong.';
+            return false;
+        }
+        else{
+            document.getElementById('password-error').textContent = '';
+            return true;
+        }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        sendData();
+        let $username = usernameValidation();
+        let $password = passwordValidation();
+
+        setTimeout(() => {
+            if($username && $password){
+                sendData();
+            }
+        }, 300)
     }
 
     return (
@@ -61,12 +84,11 @@ const MasukForm = () => {
                                 name="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
+                                onBlur={() => usernameValidation()}
                                 required
                             />
                         </label>
-                        {/* <div className="errormsg">
-                            errormsg
-                        </div> */}
+                        <span id="username-error" className="error-msg"></span>
                         <label className="flex flex-col font-bold text-lg text-cPink mb-2 mt-4" htmlFor="password">
                             Password
                             <input
@@ -76,9 +98,11 @@ const MasukForm = () => {
                                 name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                onBlur={() => passwordValidation()}
                                 required
                             />
                         </label>
+                        <span id="password-error" className="error-msg"></span>
                         <div className="text-cPink text-lg font-bold mt-2">Kamu belum punya akun? <span><a href="" className="text-cPurple underline">Yuk Daftar</a></span></div>
                         <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-12 mx-auto btnPurple">Masuk</button>
                         <button className="googlebutton font-bold text-lg flex flex-row justify-center items-center mb-8 mx-auto">
@@ -86,9 +110,7 @@ const MasukForm = () => {
                         </button>
                     </div>
                 </div>
-                {/* <div className=""> */}
-                    <img className="object-cover w-2/4 fixed right-0 h-screen" src={bg} alt="" />
-                {/* </div> */}
+                <img className="object-cover w-2/4 fixed right-0 h-screen" src={bg} alt="" />
             </div>
         </form>
     )

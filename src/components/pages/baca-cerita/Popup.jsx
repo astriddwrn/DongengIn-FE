@@ -33,7 +33,7 @@ const Popup = (props) => {
             body: encode(data)
         })
         if(postData.status===200){
-            // console.log('posted');
+            document.location.href="/";
         }
     }
 
