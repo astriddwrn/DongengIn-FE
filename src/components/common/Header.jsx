@@ -35,7 +35,7 @@ const Header = (props) => {
 
     return (
       <>    
-        <div className={(scrollState=="top" ? '' : 'bg-cWhite') + " navbar font-sans flex flex-row justify-between items-center px-20 py-5 fixed top-0 w-full"}>
+        <div className={(scrollState=="top" ? '' : 'bg-cWhite filter drop-shadow-lg') + " navbar font-sans flex flex-row justify-between items-center px-20 py-5 fixed top-0 w-full"}>
             <div className="logo"><img className="h-5" src={Logo} alt="" /></div>
             <div className="menu-list flex flex-row justify-between w-5/12 items-center font-semibold text-lg">
                 <Link to="/"><div className={`cursor-pointer ${props.currRoute==='Beranda'? 'active' : ''}`}>Beranda</div></Link>
