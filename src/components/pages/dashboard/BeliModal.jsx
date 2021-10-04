@@ -30,7 +30,6 @@ const BeliModal = (props) => {
         }
     }
 
-    console.log('props:'+props.cardid);
     const sendCard = async () => {
         let addCard = { 'type': 'add_card', 'value': props.cardid };
         let post = await fetch('https://dongengin.000webhostapp.com/api/user', {
@@ -53,24 +52,46 @@ const BeliModal = (props) => {
 
     return (
       <>
-        <main
-        className={
-            (props.state === 1 ?
-            "w-screen h-screen bg-cOverlay fixed z-20"
-            : "hidden")}>
-            <div className="w-max flex flex-col items-center justify-center bg-cWhite rounded-lg p-8 ml-96 mt-48">
-                <div onClick={e => props.closeModal()} className="w-full cursor-pointer"><img className="float-right" src={Close} alt="" /></div>
-                <div className="font-semibold text-2xl mt-4">Apakah kamu mau membeli kartu</div>
-                <div className="font-extrabold text-4xl mr-4 text-center mt-4">{props.title}</div>
-                <div className="flex flex-row items-center mt-2">
-                    <div className="font-extrabold text-4xl mr-2">{props.price}</div>
-                    <img className="w-8" src={Coin} alt=""/>
+        <main className={(props.state === 1 ? "w-screen h-screen bg-cOverlay fixed z-20" : "hidden")}>
+            {props.userCoin > props.price ?
+                <>
+                <div className="w-max flex flex-col items-center justify-center bg-cWhite rounded-lg p-8 ml-96 mt-48">
+                    <div onClick={e => props.closeModal()} className="w-full cursor-pointer"><img className="float-right" src={Close} alt="" /></div>
+                    <div className="font-semibold text-2xl mt-4">Apakah kamu mau membeli kartu</div>
+                    <div className="font-extrabold text-4xl mr-4 text-center mt-4">{props.title}</div>
+                    <div className="flex flex-row items-center mt-2">
+                        <div className="font-extrabold text-4xl mr-2">{props.price}</div>
+                        <img className="w-8" src={Coin} alt=""/>
+                    </div>
+                    <div className="mt-8">
+                        <button onClick={e => handleSubmit()} className="bg-cPink rounded-full font-bold text-cWhite py-2 px-12 text-xl mr-4 btnPink cursor-pointer mx-5">Beli Kartu</button>
+                        <button onClick={e => props.closeModal()} className="bg-cPurple rounded-full font-bold text-cWhite py-2 px-12 text-xl btnPurple cursor-pointer mx-5">Cancel</button>
+                    </div>
                 </div>
-                <div className="mt-8">
-                    <button onClick={e => handleSubmit()} className="bg-cPink rounded-full font-bold text-cWhite py-2 px-12 text-xl mr-4 btnPink cursor-pointer mx-5">Beli Kartu</button>
-                    <button onClick={e => props.closeModal()} className="bg-cPurple rounded-full font-bold text-cWhite py-2 px-12 text-xl btnPurple cursor-pointer mx-5">Cancel</button>
+                </>
+                :
+                <div className="w-max flex flex-col items-center justify-center bg-cWhite rounded-lg p-8 ml-96 mt-48">
+                    <div onClick={e => props.closeModal()} className="w-full cursor-pointer"><img className="float-right" src={Close} alt="" /></div>
+                    <div className="w-96 font-semibold text-2xl text-center mt-4">Maaf koin kamu tidak cukup</div>
+                    <div className="flex flex-row justify-center items-center my-8">
+                        <div className="flex flex-col items-center mr-4">
+                            <div className="font-extrabold text-2xl">Koin Kamu</div>       
+                            <div className="flex flex-row items-center mt-2">
+                                <div className="font-extrabold text-4xl mr-2">{props.userCoin}</div>
+                                <img className="w-6" src={Coin} alt=""/>
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center ml-4">
+                            <div className="font-extrabold text-2xl">Harga Kartu</div>       
+                            <div className="flex flex-row items-center mt-2">
+                                <div className="font-extrabold text-4xl mr-2">{props.price}</div>
+                                <img className="w-6" src={Coin} alt=""/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
+            
         </main>
       </>
     );

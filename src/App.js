@@ -38,7 +38,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log("userlopggnsas");
     fetch("https://dongengin.000webhostapp.com/api/user", {
       credentials: 'include',
     })
@@ -47,7 +46,7 @@ function App() {
       (result) => {
         setIsLoaded(true);
         setUser(result);
-        console.log(result);
+        /* console.log(result); */
         },
         (error) => {
           setIsLoaded(true);
@@ -57,7 +56,7 @@ function App() {
     }, [])
 
     const updateSearch = (v) => {
-      console.log(v);
+      /* console.log(v); */
       return setSearch(v);
     }
 

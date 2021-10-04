@@ -76,8 +76,6 @@ const KoleksiKartus = (props) => {
         setTitle(title);
         setPrice(price);
         setCardid(id);
-        console.log('id:'+id);
-        console.log(checkKartu);
     }
 
     function closeModal() {
@@ -92,7 +90,7 @@ const KoleksiKartus = (props) => {
 
     return (
         <>
-        <BeliModal closeModal={closeModal} state={modal} title={title} price={price} cardid={cardid} updateKartu={updateKartu}/>
+        <BeliModal closeModal={closeModal} state={modal} title={title} price={price} userCoin={props.user.coins} cardid={cardid} updateKartu={updateKartu}/>
         <header className="w-full text-3xl font-bold px-4 py-3 bg-cWhite">
             Koleksi Kartu
         </header>
