@@ -7,7 +7,7 @@ const Profil = (props) => {
   const [favorites, setFavorites] = useState([]);
   const [history, setHistory] = useState([]);
   const imagePath = process.env.PUBLIC_URL;
-  
+
   useEffect(() => {
     setFavorites(props.user.favorites);
     setHistory(props.user.history);
@@ -61,7 +61,7 @@ const Profil = (props) => {
           </div>
           <div className="mb-4">
             <p className="text-lg">Tanggal Lahir Anak</p>
-            <p className="text-2xl font-bold mt-2">{props.user.birthdate}</p>
+            <p className="text-2xl font-bold mt-2">{props.user.birthdate ? props.user.birthdate.slice(0, 10) : "Loading..."}</p>
           </div>
           <div>
             <p className="text-lg">Username</p>

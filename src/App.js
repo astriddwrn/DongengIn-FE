@@ -56,7 +56,7 @@ function App() {
           setError(error);
         }
      )
-    }, [user])
+    }, [])
 
     const updateSearch = (v) => {
       console.log(v);
@@ -80,7 +80,7 @@ function App() {
               user={user} />
           </Route>
           <Route path="/masuk" >
-            {user.fullname ? console.log("masukpakeko") : <Masuk user={user} />}
+            {user.fullname ? <Dashboard user={user} currRoute="Dashboard"/> : <Masuk user={user} />}
           </Route>
           <Route path="/kumpulan-dongeng">
             <KumpulanDongeng 

@@ -11,7 +11,6 @@ import { Link, useHistory } from 'react-router-dom'
 const Sidebar = ({ user, children, currRoute }) => {
   // const history = useHistory();
   // const redirect = useCallback(() => history.push('/'), [history]);
-    
     const sendData = async () => {
         var logout = await fetch('https://dongengin.000webhostapp.com/api/auth/logout', {
                 method: 'POST',
@@ -37,7 +36,7 @@ const Sidebar = ({ user, children, currRoute }) => {
         <div className="text-2xl flex flex-col justify-center items-center">
           <img className="w-32" src={User} alt="" />
           <p className="mt-4">Halo,</p>
-          <p className="font-bold">{user.fullname}</p>
+          <p className="font-bold text-center">{user.fullname}</p>
         </div>
         <div className="mt-16">
           <Link to="/profil" className="flex items-center mb-10">
