@@ -5,3 +5,7 @@
 .daftar input:active {
     outline: none;
 }
+
+.error-msg{
+    color: red;
+}

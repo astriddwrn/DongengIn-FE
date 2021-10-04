@@ -96,6 +96,11 @@
     min-width: 500px;
 }
 
+.hero .parallax{
+  position: absolute;
+  width: 50%;
+}
+
 .terfavorit .slick-track, .terfavorit .slick-list{
   height: 500px !important;
 }
