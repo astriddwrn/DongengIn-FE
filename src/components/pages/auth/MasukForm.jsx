@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from 'react-router-dom';
 import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
 
 const MasukForm = () => {
@@ -106,7 +106,7 @@ const MasukForm = () => {
                             />
                         </label>
                         <span id="password-error" className="error-msg"></span>
-                        <div className="text-cPink text-lg font-bold mt-2">Kamu belum punya akun? <span><a href="" className="text-cPurple underline">Yuk Daftar</a></span></div>
+                        <div className="text-cPink text-lg font-bold mt-2">Kamu belum punya akun? <span><Link to="/daftar" className="text-cPurple underline">Yuk Daftar</Link></span></div>
                         <button className="w-min font-extrabold text-2xl text-cWhite bg-cPurple rounded-full py-3 px-24 mt-8 mb-12 mx-auto btnPurple">Masuk</button>
                     </div>
                 </div>
