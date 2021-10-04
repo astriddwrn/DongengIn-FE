@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { Redirect } from "react-router-dom";
 import bg from '../../../assets/images/pages/auth/auth-bg.jpg';
 
 const DaftarForm = () => {
@@ -13,7 +12,6 @@ const DaftarForm = () => {
     const data = { fullname, birthdate, username, password };
     const loginData = { username, password };
 
-    const firstUpdate = useRef(true);
     
     const encode = (data) => {     
         var formBody = [];
@@ -92,9 +90,6 @@ const DaftarForm = () => {
             document.getElementById('birthdate-error').textContent = 'Tanggal lahir tidak boleh kosong.';
             return false;
         }
-        // else if(/\s/g.test(username)){
-        //     document.getElementById('birthdate-error').textContent = '';
-        // }
         else{
             document.getElementById('birthdate-error').textContent = '';
             return true;
@@ -144,9 +139,6 @@ const DaftarForm = () => {
                 sendData();
             }
         }, 300)
-
-
-        
     }
 
     return (

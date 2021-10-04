@@ -25,7 +25,6 @@ const TelusuriCerita = (props) => {
         (result) => {
           setIsLoaded(true);
           setCerita(result);
-          console.log(search);
         },
         (error) => {
           setIsLoaded(true);
@@ -95,7 +94,7 @@ const TelusuriCerita = (props) => {
                               </div>
                               <Link to={d.route}>
                                   <div className="baca-button bg-cPink text-cWhite rounded-full px-5 py-1 font-semibold tracking-widest leading-relaxed btnPink">
-                                      Baca Buku
+                                      Lihat
                                   </div>
                               </Link>
                           </div>

@@ -7,5 +7,7 @@
 }
 
 .error-msg{
-    color: red;
+    color: rgb(248, 154, 32);
+    font-weight: 600;
+    margin-left: 1rem;
 }
