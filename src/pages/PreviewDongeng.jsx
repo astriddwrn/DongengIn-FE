@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import Footer from '../components/common/Footer';
 import Header from '../components/common/Header';
@@ -8,7 +8,6 @@ import RekomendasiCerita from '../components/pages/previewdongeng/RekomendasiCer
 
 const PreviewDongeng = (props) => {
     const { pathname } = useLocation();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
