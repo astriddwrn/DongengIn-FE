@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import Close from '../../../assets/images/common/close.svg'
 import Coin from '../../../assets/images/pages/dashboard/coin.svg'
 
@@ -18,17 +18,17 @@ const BeliModal = (props) => {
 
     const sendData = async () => {
         var BeliKartu = await fetch('https://dongengin.000webhostapp.com/api/user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                },
-                credentials: 'include',
-                body: encode(useCoin)
-            })
-            if (BeliKartu.status == 200) {
-                console.log(BeliKartu);
-                props.closeModal();
-            }
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            credentials: 'include',
+            body: encode(useCoin)
+        })
+        if (BeliKartu.status == 200) {
+            console.log(BeliKartu);
+            props.closeModal();
+        }
     }
 
     const handleSubmit = () => {

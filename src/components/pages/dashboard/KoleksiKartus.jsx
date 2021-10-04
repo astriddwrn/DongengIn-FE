@@ -67,7 +67,7 @@ const KoleksiKartus = (props) => {
     }, [props.user])
 
     const [modal, setModal] = useState(0);
-    const [title, setTitle] = useState("Doni");
+    const [title, setTitle] = useState("Loading...");
     const [price, setPrice] = useState(0);
 
     function modalCard(title, price) {

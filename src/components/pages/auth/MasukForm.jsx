@@ -73,7 +73,6 @@ const MasukForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="masuk mt-24 my-0">
-            
             <div className="content w-full flex flex-row relative">
                 <div className="w-2/4 px-32">
                     <div className="flex flex-col">
