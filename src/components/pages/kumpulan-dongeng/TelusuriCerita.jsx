@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import SearchIcon from '../../../assets/images/pages/beranda/hero-searchicon.svg';
 import Star from '../../../assets/images/common/star.svg';
+import grayStar from '../../../assets/images/common/graystar.svg';
 
 const TelusuriCerita = (props) => {
 
@@ -90,6 +91,12 @@ const TelusuriCerita = (props) => {
                                       <img className={""+((d.rating >= 3) ? '' : 'hidden')} src={Star} alt="" />
                                       <img className={""+((d.rating >= 4) ? '' : 'hidden')} src={Star} alt="" />
                                       <img className={""+((d.rating >= 5) ? '' : 'hidden')} src={Star} alt="" />
+
+                                      <img className={"w-4 opacity-50 "+((d.rating <= 5) ? '' : 'hidden')} src={grayStar} alt="" />
+                                      <img className={"w-4 opacity-50  "+((d.rating <= 4) ? '' : 'hidden')} src={grayStar} alt="" />
+                                      <img className={"w-4 opacity-50  "+((d.rating <= 3) ? '' : 'hidden')} src={grayStar} alt="" />
+                                      <img className={"w-4 opacity-50  "+((d.rating <= 2) ? '' : 'hidden')} src={grayStar} alt="" />
+                                      <img className={"w-4 opacity-50  "+((d.rating <= 1) ? '' : 'hidden')} src={grayStar} alt="" />
                                   </div>
                               </div>
                               <Link to={d.route}>

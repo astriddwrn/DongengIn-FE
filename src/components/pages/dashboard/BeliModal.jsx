@@ -43,17 +43,17 @@ const BeliModal = (props) => {
             "w-screen h-screen bg-cOverlay fixed z-20"
             : "hidden")}>
             <div className="w-max flex flex-col items-center justify-center bg-cWhite rounded-lg p-8 ml-96 mt-48">
-            <div onClick={e => props.closeModal()} className="w-full"><img className="float-right" src={Close} alt="" /></div>
-            <div className="font-semibold text-2xl mt-4">Apakah kamu mau membeli kartu</div>
-            <div className="font-extrabold text-4xl mr-4 text-center">{props.title}</div>
-            <div className="flex flex-row items-center mt-2">
-                <div className="font-extrabold text-4xl mr-2">{props.price}</div>
-                <img className="w-8" src={Coin} alt=""/>
-            </div>
-            <div className="mt-8">
-                <button onClick={e => handleSubmit()} className="bg-cPink rounded-full font-extrabold text-cWhite py-2 px-12 text-2xl mr-4">Beli Kartu</button>
-                <button onClick={e => props.closeModal()} className="bg-cPurple rounded-full font-extrabold text-cWhite py-2 px-12 text-2xl">Cancel</button>
-            </div>
+                <div onClick={e => props.closeModal()} className="w-full cursor-pointer"><img className="float-right" src={Close} alt="" /></div>
+                <div className="font-semibold text-2xl mt-4">Apakah kamu mau membeli kartu</div>
+                <div className="font-extrabold text-4xl mr-4 text-center mt-4">{props.title}</div>
+                <div className="flex flex-row items-center mt-2">
+                    <div className="font-extrabold text-4xl mr-2">{props.price}</div>
+                    <img className="w-8" src={Coin} alt=""/>
+                </div>
+                <div className="mt-8">
+                    <button onClick={e => handleSubmit()} className="bg-cPink rounded-full font-bold text-cWhite py-2 px-12 text-xl mr-4 btnPink cursor-pointer mx-5">Beli Kartu</button>
+                    <button onClick={e => props.closeModal()} className="bg-cPurple rounded-full font-bold text-cWhite py-2 px-12 text-xl btnPurple cursor-pointer mx-5">Cancel</button>
+                </div>
             </div>
         </main>
       </>

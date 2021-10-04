@@ -93,7 +93,7 @@ const KoleksiKartus = (props) => {
                 if ((checkKartu).indexOf(d.id) <= -1) {
                     modalCard(d.title, d.price);
                 }
-                }} key={d.id} className="bg-cWhite p-4 rounded-xl relative z-10">
+                }} key={d.id} className="bg-cWhite p-4 rounded-xl relative z-10 cursor-pointer">
                 <div className={"w-full absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " + ((checkKartu).indexOf(d.id) > -1 ? "hidden" : "")}>
                     <div className="flex flex-row items-center justify-center">
                     <div className="font-extrabold text-cWhite text-4xl mr-2">{d.price}</div>

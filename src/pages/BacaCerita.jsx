@@ -14,7 +14,7 @@ import Popup from '../components/pages/baca-cerita/Popup';
 
 
 const BacaCerita = (props) => {
-    const [pagenum, setPagenum] = useState(9);
+    const [pagenum, setPagenum] = useState(1);
     const totalPage = 9;
     const minPage = 1;
     const maxPage = 9;

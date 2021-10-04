@@ -46,20 +46,20 @@ const CeritaPage8 = (props) => {
                 </div>
     
                 <div className={`caption-cont absolute bottom-10 text-lg w-8/12 left-1/2 transform -translate-x-1/2 bg-cWhite py-3 px-8 rounded-lg tracking-widest leading-relaxed + ${currCaption==maxCaption? "fadeIn text-center" : "fadeOut"}`}>
-                  Apa yang dilakukan Mande Rubayah ketika bertemu dengan Malin?
+                  Apakah yang dilakukan Malin kepada ibunya adalah perbuatan yang baik?
                   <div className="flex flex-wrap 8/12 justify-center mt-3">
                         <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-48 mx-3 rounded-lg  + 
                           ${answer===1? "incorrectAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                           onClick={()=> 
                             !answer? setAnswer(1) : null
-                            }>Diam Saja</div>
+                            }>Ya</div>
   
                         <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-48 mx-3 rounded-lg  + 
                           ${answer? "correctAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                           onClick={()=>{ if(!answer){
                             setAnswer(2);
                             props.totalKoin(100);
-                          }}} >Memeluknya</div>
+                          }}} >Tidak</div>
                           
                   </div>
                 </div>

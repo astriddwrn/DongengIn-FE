@@ -39,7 +39,7 @@ const Profil = (props) => {
                 {favorites ?  favorites.map(d =>
                 <Link key={d.id} className="mt-2 w-32 flex justify-center relative mr-2"
                 to={d.route}>
-                    <div className="font-semibold text-cWhite text-center absolute bottom-2">{d.title}</div>
+                    <div className="font-semibold text-cWhite text-center absolute bottom-2 px-1">{d.title}</div>
                     <img className="object-cover object-center h-full w-full" src={`${imagePath}${d.thumbnail}`} alt="" />
                 </Link>
                 ) : <div className="font-semibold text-2xl text-cPurple mt-4">Loading...</div>}

@@ -64,7 +64,7 @@ const Popup = (props) => {
                     <img src={`${rating>=4? bluestar : graystar} `} className={``} onClick={()=>setRating(4)} />
                     <img src={`${rating>=5? bluestar : graystar} `} className={``} onClick={()=>setRating(5)} />
                 </div>
-                <div to className="submitBtn bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer w-60 mx-auto cursor-pointer"
+                <div to className="submitBtn bg-cPink text-cWhite rounded-full px-5 py-1 font-bold cursor-pointer w-60 mx-auto cursor-pointer btnPink"
                     onClick={()=>handleOnClick()}>Selesai</div>
             </div>
         </div>

@@ -23,10 +23,10 @@ const Footer = () => {
             <div className="absolute z-30 w-10/12 transform -translate-x-1/2  flex flex-row justify-between items-center bottom-28 left-1/2">
                 <img className="h-6" src={LogoBlue} alt="" />
                 <div className="flex flex-row items-center w-40 justify-between items-center">
-                    <img className="w-8" src={Youtube} alt="" />
-                    <img className="w-8" src={Instagram} alt="" />
-                    <img className="w-8" src={Playstore} alt="" />
-                    <img className="w-8" src={Appstore} alt="" />
+                    <a href="https://www.youtube.com/" target="_blank"><img className="w-8" src={Youtube} alt="" /></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img className="w-8" src={Instagram} alt="" /></a>
+                    <a href="https://play.google.com/store" target="_blank"><img className="w-8" src={Playstore} alt="" /></a>
+                    <a href="https://www.apple.com/id/app-store/" target="_blank"><img className="w-8" src={Appstore} alt="" /></a>
                 </div>
             </div>
             <div className="absolute w-full bottom-1 text-center">
