@@ -52,7 +52,7 @@ const CeritaPage3 = (props) => {
                         ${answer? "correctAns" : ""} ${!answer? "btnBlue cursor-pointer" : ''}`}
                         onClick={()=>{ if(!answer){
                             setAnswer(1);
-                            props.totalKoin(100);
+                            props.totalKoin(70);
                           }}} >Mande Rubayah</div>
 
                       <div className={`answer bg-cBlue text-cWhite text-lg py-2 px-3 w-48 mx-3 rounded-lg  + 
@@ -75,7 +75,7 @@ const CeritaPage3 = (props) => {
                 </div>
               </div>
      
-              <div className={`feedback feedbackCorrect text-cWhite bg-cBlack absolute top-16 -right-96 z-40 rounded-lg z-30 w-96 px-3 py-3 text-lg ${answer==correctAnswer && currCaption==maxCaption ? 'visible' : ''} `}>Selamat kamu mendapatkan 100 Koin!</div>
+              <div className={`feedback feedbackCorrect text-cWhite bg-cBlack absolute top-16 -right-96 z-40 rounded-lg z-30 w-96 px-3 py-3 text-lg ${answer==correctAnswer && currCaption==maxCaption ? 'visible' : ''} `}>Selamat kamu mendapatkan 70 Koin!</div>
               <div className={`feedback feedbackIncorrect text-cWhite bg-cBlack absolute top-16 -right-96 z-40 rounded-lg z-30 w-96 px-3 py-3 text-lg ${answer!=correctAnswer && answer!=null && currCaption==maxCaption? 'visible' : ''} `}>Maaf kamu belum beruntung :(</div>
   
           </div>

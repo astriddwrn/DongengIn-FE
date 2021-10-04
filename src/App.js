@@ -17,8 +17,7 @@ function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stories, setStories] = useState([]);
-  const [user, setUser] = useState({fullname: ''});
-  
+  const [user, setUser] = useState({fullname: '', coins: 0});
   const [search, setSearch] = useState(null);
  
   useEffect(() => {
@@ -46,7 +45,6 @@ function App() {
       (result) => {
         setIsLoaded(true);
         setUser(result);
-        /* console.log(result); */
         },
         (error) => {
           setIsLoaded(true);
@@ -59,7 +57,6 @@ function App() {
       /* console.log(v); */
       return setSearch(v);
     }
-
 
   return (
     <>
@@ -100,7 +97,8 @@ function App() {
           <Route path="/profil">
             <Dashboard 
               user={user}
-              currRoute="Dashboard"/>
+              currRoute="Dashboard"
+              />
           </Route>
           <Route path="/koleksi-kartu">
             <KoleksiKartu 

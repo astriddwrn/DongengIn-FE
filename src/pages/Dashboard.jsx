@@ -8,7 +8,7 @@ const Dashboard = (props) => {
         useEffect(() => {
             window.scrollTo(0, 0);
         }, [pathname]);
-
+    
     return (
         <Sidebar currRoute={props.currRoute} user={props.user}>
             <Profil user={props.user}/>

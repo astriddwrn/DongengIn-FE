@@ -9,8 +9,6 @@ import React, { useCallback} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 const Sidebar = ({ user, children, currRoute }) => {
-    // const history = useHistory();
-    // const redirect = useCallback(() => history.push('/'), [history]);
     const sendData = async () => {
         var logout = await fetch('https://dongengin.000webhostapp.com/api/auth/logout', {
                 method: 'POST',
@@ -39,11 +37,11 @@ const Sidebar = ({ user, children, currRoute }) => {
             <p className="font-bold text-center">{user.fullname}</p>
             </div>
             <div className="mt-16">
-            <Link to="/profil" className="flex items-center mb-10">
+            <a href="/profil" className="flex items-center mb-10">
                 <img className={`cursor-pointer ${currRoute==='Dashboard' ? 'w-10' : 'hidden'}`} src={Profil} alt="" />
                 <img className={`cursor-pointer ${currRoute==='Dashboard' ? 'hidden' : 'w-10'}`} src={ProfilNon} alt="" />
                 <p className="text-lg font-bold ml-4">Profil</p>
-            </Link>
+            </a>
             <Link to="/koleksi-kartu" className="flex items-center">
                 <img className={`cursor-pointer ${currRoute==='KoleksiKartu' ? 'hidden' : 'w-10'}`} src={KoleksiNon} alt="" />
                 <img className={`cursor-pointer ${currRoute==='KoleksiKartu' ? 'w-10' : 'hidden'}`} src={Koleksi} alt="" />
