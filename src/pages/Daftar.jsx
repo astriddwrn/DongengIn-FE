@@ -19,5 +19,5 @@ const Daftar = (props) => {
     );
 
 };
-
+// Added this comment
 export default Daftar;
